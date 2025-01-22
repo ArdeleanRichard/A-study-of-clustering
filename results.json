@@ -1,0 +1,200 @@
+[
+    {
+        "dataset": {
+            "name": "DatasetD1",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmKMeans",
+            "params": {
+                "n_clusters": 3
+            }
+        },
+        "score_name": "compute_silhouette",
+        "score_value": 0.6457652622216171
+    },
+    {
+        "dataset": {
+            "name": "DatasetD1",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmKMeans",
+            "params": {
+                "n_clusters": 3
+            }
+        },
+        "score_name": "compute_calinski_harabasz",
+        "score_value": 3208.172741633069
+    },
+    {
+        "dataset": {
+            "name": "DatasetD1",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmKMeans",
+            "params": {
+                "n_clusters": 3
+            }
+        },
+        "score_name": "compute_davies_bouldin",
+        "score_value": 0.5034098320843207
+    },
+    {
+        "dataset": {
+            "name": "DatasetD1",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmDBSCAN",
+            "params": {
+                "eps": 0.3,
+                "min_samples": 10
+            }
+        },
+        "score_name": "compute_silhouette",
+        "score_value": -0.24447288328615968
+    },
+    {
+        "dataset": {
+            "name": "DatasetD1",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmDBSCAN",
+            "params": {
+                "eps": 0.3,
+                "min_samples": 10
+            }
+        },
+        "score_name": "compute_calinski_harabasz",
+        "score_value": 147.50024192123044
+    },
+    {
+        "dataset": {
+            "name": "DatasetD1",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmDBSCAN",
+            "params": {
+                "eps": 0.3,
+                "min_samples": 10
+            }
+        },
+        "score_name": "compute_davies_bouldin",
+        "score_value": 1.2719855562624023
+    },
+    {
+        "dataset": {
+            "name": "DatasetD2",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmKMeans",
+            "params": {
+                "n_clusters": 3
+            }
+        },
+        "score_name": "compute_silhouette",
+        "score_value": 0.5104261397509146
+    },
+    {
+        "dataset": {
+            "name": "DatasetD2",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmKMeans",
+            "params": {
+                "n_clusters": 3
+            }
+        },
+        "score_name": "compute_calinski_harabasz",
+        "score_value": 2628.9232445218177
+    },
+    {
+        "dataset": {
+            "name": "DatasetD2",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmKMeans",
+            "params": {
+                "n_clusters": 3
+            }
+        },
+        "score_name": "compute_davies_bouldin",
+        "score_value": 0.7212485621942905
+    },
+    {
+        "dataset": {
+            "name": "DatasetD2",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmDBSCAN",
+            "params": {
+                "eps": 0.3,
+                "min_samples": 10
+            }
+        },
+        "score_name": "compute_silhouette",
+        "score_value": 0.4535773384121385
+    },
+    {
+        "dataset": {
+            "name": "DatasetD2",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmDBSCAN",
+            "params": {
+                "eps": 0.3,
+                "min_samples": 10
+            }
+        },
+        "score_name": "compute_calinski_harabasz",
+        "score_value": 983.8230410726226
+    },
+    {
+        "dataset": {
+            "name": "DatasetD2",
+            "params": {
+                "n_samples": 1000
+            }
+        },
+        "algorithm": {
+            "name": "AlgorithmDBSCAN",
+            "params": {
+                "eps": 0.3,
+                "min_samples": 10
+            }
+        },
+        "score_name": "compute_davies_bouldin",
+        "score_value": 1.9821502022661215
+    }
+]
