@@ -1,6 +1,5 @@
 import numpy as np
-from parse.data_arff import create_yeast
-from parse.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog
+from parse.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog, create_yeast
 
 
 def create_setHD():
