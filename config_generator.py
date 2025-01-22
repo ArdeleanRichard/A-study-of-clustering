@@ -1,7 +1,7 @@
 import json
 import itertools
 
-def generate_experiment_config(datasets, algorithms_by_dataset, scores, output_file="experiment_config.json"):
+def generate_experiment_config(datasets, algorithms_by_dataset, scores, output_file="./configs/experiment_config.json"):
     """
     Generates a configuration file for clustering experiments, handling multiple datasets and dataset-specific algorithm parameters.
 
@@ -54,7 +54,14 @@ if __name__ == "__main__":
     }
 
     # scores to compute
-    scores = ["compute_silhouette", "compute_calinski_harabasz", "compute_davies_bouldin"]
+    scores = [
+        "compute_ari",
+        "compute_ami",
+        "compute_purity",
+        "compute_silhouette",
+        "compute_calinski_harabasz",
+        "compute_davies_bouldin"
+    ]
 
     # Generate configuration
     generate_experiment_config(datasets, algorithms_by_dataset, scores)

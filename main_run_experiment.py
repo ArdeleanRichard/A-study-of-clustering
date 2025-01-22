@@ -34,7 +34,7 @@ def run_experiment(experiment):
     # Compute metric
     metric_name = experiment["score"]
     metric_function = load_class("base_scores", metric_name)
-    score = metric_function(X, labels)
+    score = metric_function(X, y, labels)
 
     return {
         "dataset": dataset_cfg,
