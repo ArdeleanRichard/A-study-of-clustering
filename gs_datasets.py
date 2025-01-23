@@ -35,24 +35,57 @@ def load_all_data():
     return datasets
 
 
-
-
-def load_arff_data():
+def load_data_simple():
+    n_samples = 1000
     datasets = [
-        ("2d4c",create_2d4c()  ),
-        ("2d10c",create_2d10c()  ),
-        ("2d20c",create_2d20c()  ),
-        ("3spiral",create_3spiral()  ),
-        ("aggregation",create_aggregation()  ),
-        ("compound",create_compound()  ),
-        ("elly2d10c13s",create_elly_2d10c13s()  ),
-        ("s1",create_s1()  ),
-        ("s2",create_s2()),
+        ("D1", create_data1(n_samples)),
+        ("D2", create_data2(n_samples)),
+        ("D3", create_data3(n_samples)),
     ]
 
     return datasets
 
-def load_uci_data():
+
+def load_data_overlap():
+    datasets = [
+        ("s1", create_s1()),
+        ("s2", create_s2()),
+    ]
+    return datasets
+
+
+def load_data_imbalance():
+    datasets = [
+        ("2d4c", create_2d4c()),
+        ("2d10c", create_2d10c()),
+        ("2d20c", create_2d20c()),
+        ("unbalance", create_unbalance()),
+    ]
+
+    return datasets
+def load_data_overlap_and_imbalance():
+    n_samples = 1000
+    datasets = [
+        ("aggregation", create_aggregation()),
+        ("compound", create_compound()),
+        ("elly2d10c13s", create_elly_2d10c13s()),
+    ]
+
+    return datasets
+
+
+
+def load_data_nonconvex():
+    n_samples = 1000
+    datasets = [
+        ("D4", create_data4(n_samples)),
+        ("D5", create_data5(n_samples)),
+        ("3spiral",create_3spiral()  ),
+    ]
+
+    return datasets
+
+def load_data_hd():
     datasets = [
         ("ecoli", create_ecoli()),
         ("glass", create_glass()),
@@ -66,21 +99,58 @@ def load_uci_data():
 
     return datasets
 
-def load_sklearn_data():
-    n_samples = 1000
-    datasets = [
-        ("D1", create_data1(n_samples)),
-        ("D2", create_data2(n_samples)),
-        ("D3", create_data3(n_samples)),
-        ("D4", create_data4(n_samples)),
-        ("D5", create_data5(n_samples)),
-    ]
 
-    return datasets
 
-def load_csv_data():
-    datasets = [
-        ("unbalance", create_unbalance()),
-    ]
 
-    return datasets
+
+
+
+
+# OLD LOAD BY TYPE
+# def load_arff_data():
+#     datasets = [
+#         ("2d4c",create_2d4c()  ),
+#         ("2d10c",create_2d10c()  ),
+#         ("2d20c",create_2d20c()  ),
+#         ("3spiral",create_3spiral()  ),
+#         ("aggregation",create_aggregation()  ),
+#         ("compound",create_compound()  ),
+#         ("elly2d10c13s",create_elly_2d10c13s()  ),
+#         ("s1",create_s1()  ),
+#         ("s2",create_s2()),
+#     ]
+#
+#     return datasets
+#
+# def load_uci_data():
+#     datasets = [
+#         ("ecoli", create_ecoli()),
+#         ("glass", create_glass()),
+#         ("yeast", create_yeast()),
+#         ("statlog", create_statlog()),
+#         ("wdbc", create_wdbc()),
+#         ("wine", create_wine()),
+#         ("sonar", create_sonar()),
+#         ("ionosphere", create_ionosphere()),
+#     ]
+#
+#     return datasets
+#
+# def load_sklearn_data():
+#     n_samples = 1000
+#     datasets = [
+#         ("D1", create_data1(n_samples)),
+#         ("D2", create_data2(n_samples)),
+#         ("D3", create_data3(n_samples)),
+#         ("D4", create_data4(n_samples)),
+#         ("D5", create_data5(n_samples)),
+#     ]
+#
+#     return datasets
+#
+# def load_csv_data():
+#     datasets = [
+#         ("unbalance", create_unbalance()),
+#     ]
+#
+#     return datasets

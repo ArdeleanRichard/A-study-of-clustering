@@ -2,12 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.patches import Rectangle
+import matplotlib
+
 
 from constants import DIR_RESULTS
+from gs_datasets import load_data_simple, load_data_hd, load_data_nonconvex, load_data_overlap_and_imbalance, load_data_imbalance, load_data_overlap
+from constants import DIR_FIGURES
 
-
-
-def transform_data_np(df, algorithms, datasets, scores):
+def transform_data_np(df, algorithms, datasets, scores, data_names):
     score_columns = [
         "adjusted_rand_score",
         "adjusted_mutual_info_score",
@@ -19,33 +21,35 @@ def transform_data_np(df, algorithms, datasets, scores):
 
     # Initialize an array to store the scores
     # Shape: (number of algorithms, number of datasets, number of scores)
-    data = np.zeros((len(algorithms), len(datasets), len(score_columns)))
+    data = np.zeros((len(algorithms), len(data_names), len(score_columns)))
 
     # Populate the array
     for i, algorithm in enumerate(algorithms):
-        for j, dataset in enumerate(datasets):
-            # Filter rows for the current algorithm and dataset
-            row = df[(df["algorithm"] == algorithm) & (df["dataset"] == dataset)]
-            if not row.empty:
-                # Extract the scores and store them in the array
-                data[i, j, :] = row[score_columns].values[0]
+        for j, dataset in enumerate(data_names):
+            if dataset in data_names:
+                # Filter rows for the current algorithm and dataset
+                row = df[(df["algorithm"] == algorithm) & (df["dataset"] == dataset)]
+                if not row.empty:
+                    # Extract the scores and store them in the array
+                    data[i, j, :] = row[score_columns].values[0]
 
     return data
 
-def plot_hierarchical_visualization(df):
+def plot_hierarchical_visualization(title, df, data_names):
     algorithms = df["algorithm"].unique()
     datasets = df["dataset"].unique()
     scores = ["ARI", "AMI", "Pur", "SS", "CHS", "DBS"]
 
     # Parameters
     num_algorithms = len(algorithms)
-    num_datasets = len(datasets)
+    num_datasets = len(data_names)
     num_scores = len(scores)
 
     # data (shape: algorithms x datasets x scores)
-    data = transform_data_np(df, algorithms, datasets, scores)
+    data = transform_data_np(df, algorithms, datasets, scores, data_names)
 
     fig, ax = plt.subplots(figsize=(16, 11))
+    fig.set_dpi(600)
 
     # Overall grid dimensions, with spacing
     total_width = 1.0
@@ -80,10 +84,10 @@ def plot_hierarchical_visualization(df):
     ax.set_xlim(0, total_width)
     ax.set_ylim(0, total_height)
     ax.set_xticks([((dataset_width + spacing_width) * i + 0.5 * dataset_width) for i in range(num_datasets)])
-    ax.set_xticklabels(datasets)
+    ax.set_xticklabels(data_names)
     ax.set_yticks([(total_height - (2 * i + 0.5) * algo_height) for i in range(num_algorithms)])  # Align ticks with rows
     ax.set_yticklabels(algorithms)
-    ax.set_title("Comparison")
+    ax.set_title(title)
     ax.set_xlabel("Datasets")
     ax.set_ylabel("Algorithms")
 
@@ -117,10 +121,34 @@ def plot_hierarchical_visualization(df):
     ax2.xaxis.set_ticks_position('top')
 
     plt.tight_layout()
-    plt.show()
+    # plt.show()
+    plt.savefig(DIR_FIGURES + f"{title}.png")
+    plt.close()
 
 
 if __name__ == "__main__":
     df = pd.read_csv(DIR_RESULTS + 'grid_search_summary.csv')
-    # Plot the hierarchical visualization
-    plot_hierarchical_visualization(df)
+
+    datasets = load_data_simple()
+    data_names = [x[0] for x in datasets]
+    plot_hierarchical_visualization(title="Comparison on simple datasets", df=df, data_names=data_names)
+
+    datasets = load_data_overlap()
+    data_names = [x[0] for x in datasets]
+    plot_hierarchical_visualization(title="Comparison on overlap datasets", df=df, data_names=data_names)
+
+    datasets = load_data_imbalance()
+    data_names = [x[0] for x in datasets]
+    plot_hierarchical_visualization(title="Comparison on imbalance datasets", df=df, data_names=data_names)
+
+    datasets = load_data_overlap_and_imbalance()
+    data_names = [x[0] for x in datasets]
+    plot_hierarchical_visualization(title="Comparison on overlap and imbalance datasets", df=df, data_names=data_names)
+
+    datasets = load_data_nonconvex()
+    data_names = [x[0] for x in datasets]
+    plot_hierarchical_visualization(title="Comparison on nonconvex datasets", df=df, data_names=data_names)
+
+    datasets = load_data_hd()
+    data_names = [x[0] for x in datasets]
+    plot_hierarchical_visualization(title="Comparison on high dimensional datasets", df=df, data_names=data_names)

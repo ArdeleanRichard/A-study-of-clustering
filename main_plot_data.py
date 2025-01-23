@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import visualization.scatter_plot as sp
+from constants import DIR_FIGURES
 from data_read.data_arff import create_2d4c, create_2d10c, create_2d20c, create_3spiral, create_aggregation, create_compound, create_elly_2d10c13s, create_s1, create_s2
 from data_read.data_csv import create_unbalance
 from data_read.data_sklearn import create_data1, create_data2, create_data3, create_data4, create_data5
@@ -17,7 +18,7 @@ def plot_datasets(datasets, pca=None):
             sp.plot(title, X, y)
         else:
             sp.plot2D(title, X, y)
-        plt.savefig("./figs/datafigs/"+title+".png")
+        plt.savefig(DIR_FIGURES + "datafigs/"+title+".png")
         plt.close()
 
 
@@ -71,6 +72,6 @@ def draw_csv_data():
 
 if __name__ == "__main__":
     draw_arff_data()
-    # draw_uci_data()
+    draw_uci_data()
     draw_sklearn_data()
     draw_csv_data()
