@@ -27,7 +27,6 @@ def create_yeast():
     fetched_data = fetch_ucirepo(id=110)
     return read_uci(fetched_data)
 
-
 def create_statlog():
     fetched_data = fetch_ucirepo(id=147)
     return read_uci(fetched_data)
@@ -36,11 +35,9 @@ def create_wdbc():
     fetched_data = fetch_ucirepo(id=17)
     return read_uci(fetched_data)
 
-
 def create_wine():
     fetched_data = fetch_ucirepo(id=109)
     return read_uci(fetched_data)
-
 
 def create_sonar():
     fetched_data = fetch_ucirepo(id=151)

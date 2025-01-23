@@ -1,5 +1,4 @@
-import numpy as np
-from parse.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog, create_yeast
+from data_read.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog, create_yeast
 
 
 def create_setHD():

@@ -1,15 +1,18 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import visualization.scatter_plot as sp
-from parse.data_arff import create_2d4c, create_2d10c, create_2d20c, create_3spiral, create_aggregation, create_compound, create_elly_2d10c13s, create_s1, create_s2
-from parse.data_csv import create_unbalance
-from parse.data_sklearn import create_data1, create_data2, create_data3, create_data4, create_data5
-from parse.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog, create_yeast
+from data_read.data_arff import create_2d4c, create_2d10c, create_2d20c, create_3spiral, create_aggregation, create_compound, create_elly_2d10c13s, create_s1, create_s2
+from data_read.data_csv import create_unbalance
+from data_read.data_sklearn import create_data1, create_data2, create_data3, create_data4, create_data5
+from data_read.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog, create_yeast
 
 
 def plot_datasets(datasets, pca=None):
     for dataset in datasets:
         (title, (X, y)) = dataset
+        print(f"{title, X.shape[0], X.shape[1], len(np.unique(y)),}")
         if pca is None:
             sp.plot(title, X, y)
         else:
