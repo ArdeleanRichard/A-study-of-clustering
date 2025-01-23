@@ -66,7 +66,7 @@ def main(config_file="./configs/experiment_config.json"):
         print()
 
     # Save results to a file
-    with open("results.json", "w") as f:
+    with open("../results.json", "w") as f:
         json.dump(results, f, indent=4)
 
     print("All experiments completed. Results saved to 'results.json'.")
