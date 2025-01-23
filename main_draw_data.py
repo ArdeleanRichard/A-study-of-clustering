@@ -1,5 +1,9 @@
+"""
+This file only exists for the plotting of data:
+- Plots can be found in figs/datafigs/
+"""
+
 import matplotlib.pyplot as plt
-import numpy as np
 import visualization.scatter_plot as sp
 from parse.data_arff import create_2d4c, create_2d10c, create_2d20c, create_3spiral, create_aggregation, create_compound, create_elly_2d10c13s, create_s1, create_s2
 from parse.data_csv import create_unbalance
@@ -68,6 +72,6 @@ def draw_csv_data():
 
 if __name__ == "__main__":
     draw_arff_data()
-    # draw_uci_data()
+    draw_uci_data()
     draw_sklearn_data()
     draw_csv_data()

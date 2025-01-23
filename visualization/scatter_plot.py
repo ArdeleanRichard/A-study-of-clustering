@@ -72,7 +72,6 @@ def plot2D(title, X, labels=None, plot=True, marker='o', alpha=1):
     pca_2d = PCA(n_components=2)
     X2D = pca_2d.fit_transform(X)
     if plot:
-        nrDim = len(X[0])
         fig = plt.figure()  # figsize=(16, 12), dpi=400
         plt.title(title)
 
@@ -85,28 +84,9 @@ def plot2D(title, X, labels=None, plot=True, marker='o', alpha=1):
         else:
             label_color = 'gray'
 
-        if nrDim == 2:
-            plt.scatter(X[:, 0], X[:, 1], c=label_color, marker=marker, edgecolors='k', alpha=alpha)
-        if nrDim == 3:
-            # ax = fig.add_subplot(projection='3d')
-            # if labels is None:
-            #     ax.scatter(X[:, 0], X[:, 1], X[:, 2], marker=marker, edgecolors='k')
-            # else:
-            #     try:
-            #         label_color = [cs.LABEL_COLOR_MAP[l] for l in labels]
-            #     except KeyError:
-            #         print('Too many labels! Using default colors...\n')
-            #         label_color = [l for l in labels]
-            #     ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=label_color, marker=marker, edgecolors='k', alpha=alpha)
-            plt.axis('off')
 
-            ax = Axes3D(fig)
-            # ax.set_axis_off()
-            ax.set_xlabel("x")
-            ax.set_ylabel("y")
-            ax.set_zlabel("z")
+        plt.scatter(X2D[:, 0], X2D[:, 1], c=label_color, marker=marker, edgecolors='k', alpha=alpha)
 
-            ax.scatter(X[:, 0], X[:, 1], X[:, 2], marker=marker, c=label_color, edgecolors='k', s=25)
 
 
 def plot_grid(title, X, pn, labels=None, plot=True, marker='o'):
