@@ -4,6 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing
+from sklearn.cluster import estimate_bandwidth
 from sklearn.metrics import silhouette_score, davies_bouldin_score, adjusted_rand_score, adjusted_mutual_info_score, calinski_harabasz_score
 from sklearn.metrics.cluster import contingency_matrix
 
@@ -13,7 +14,8 @@ from gs_datasets import load_arff_data, load_all_data
 
 
 def normalize_dbs(df):
-    df['davies_bouldin_score'] = 1 - df['davies_bouldin_score'] / df['davies_bouldin_score'].max()
+    # df['davies_bouldin_score'] = 1 - df['davies_bouldin_score'] / df['davies_bouldin_score'].max() # doesnt work as well as I would like
+    df['davies_bouldin_score'] = 1 / (1 + df['davies_bouldin_score'])
     return df
 
 def normalize_chs(df):
@@ -35,9 +37,18 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
         for algo_name, algo_details in algorithms.items():
             results = []
             param_names = list(algo_details["param_grid"].keys())
+
+            # -------------
+            # SPECIAL PARAMS
+            # -------------
             for param_name in param_names:
                 if param_name == "n_clusters":
                     algo_details["param_grid"]["n_clusters"] = [len(np.unique(y_true))]
+                if param_name == "bandwidth":
+                    bandwidth = estimate_bandwidth(X, quantile=0.1, n_samples=50)
+                    algo_details["param_grid"]["bandwidth"].extend([bandwidth])
+            # -------------
+
 
             param_combinations = list(itertools.product(*algo_details["param_grid"].values()))
 

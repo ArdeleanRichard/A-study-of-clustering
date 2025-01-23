@@ -22,21 +22,21 @@ def load_all_data():
         ("elly2d10c13s",create_elly_2d10c13s()  ),
         ("s1",create_s1()  ),
         ("s2",create_s2()),
-        # ("ecoli", create_ecoli()),
-        # ("glass", create_glass()),
-        # ("yeast", create_yeast()),
-        # ("statlog", create_statlog()),
-        # ("wdbc", create_wdbc()),
-        # ("wine", create_wine()),
-        # ("sonar", create_sonar()),
-        # ("ionosphere", create_ionosphere()),
+        ("ecoli", create_ecoli()),
+        ("glass", create_glass()),
+        ("yeast", create_yeast()),
+        ("statlog", create_statlog()),
+        ("wdbc", create_wdbc()),
+        ("wine", create_wine()),
+        ("sonar", create_sonar()),
+        ("ionosphere", create_ionosphere()),
     ]
 
     return datasets
 
 
 
-# Step 1: Define datasets
+
 def load_arff_data():
     datasets = [
         ("2d4c",create_2d4c()  ),

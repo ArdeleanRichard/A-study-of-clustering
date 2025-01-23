@@ -1,0 +1,3 @@
+n_clusters,affinity,random_state,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score
+3,nearest_neighbors,42,0.9703775993115556,0.9543787203994502,0.99,0.6504052302882231,0.9996167268156023,0.6702983808981066
+3,rbf,42,0.9821172165861544,0.9687771988294219,0.994,0.6512679645393351,1.0,0.6712097188071602
