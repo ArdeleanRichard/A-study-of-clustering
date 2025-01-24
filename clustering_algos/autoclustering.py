@@ -6,7 +6,7 @@ from sklearn.metrics import v_measure_score
 from sklearn.preprocessing import StandardScaler
 
 from sklearn.datasets import load_iris
-from datasets import create_2d4c, create_2d10c
+
 
 # AutoClustering: A Feed-Forward Neural Network Based Clustering Algorithm
 # Masaomi Kimura
@@ -14,7 +14,7 @@ from datasets import create_2d4c, create_2d10c
 # https://ieeexplore.ieee.org/document/8637379
 
 class AutoClustering(tf.keras.Model):
-    def __init__(self, input_dim, encoder_layer_sizes, decoder_layer_sizes, num_clusters, alpha_final=500.0, gamma=4.0):
+    def __init__(self, input_dim, n_clusters, alpha_final=500.0, gamma=4.0, init=None):
         """
         AutoClustering model with configurable encoder and decoder layers.
 
@@ -22,13 +22,18 @@ class AutoClustering(tf.keras.Model):
             input_dim (int): Dimension of input data.
             encoder_layer_sizes (list of int): List specifying the number of neurons in each encoder layer.
             decoder_layer_sizes (list of int): List specifying the number of neurons in each decoder hidden layer.
-            num_clusters (int): Number of clusters for the output of the encoder.
+            (self.n_clusters (int): Number of clusters for the output of the encoder.
             alpha_final (float): Final value of alpha for the quasi-max function.
             gamma (float): Controls the curve of alpha growth.
         """
         super(AutoClustering, self).__init__()
         self.alpha_final = alpha_final
         self.gamma = gamma
+        self.n_clusters = n_clusters
+
+        # Encoder and decoder configs
+        encoder_layer_sizes = [20, 20, 20]
+        decoder_layer_sizes = [20, 20, 20]
 
         # Build the encoder layers
         self.encoder_layers = []
@@ -36,7 +41,7 @@ class AutoClustering(tf.keras.Model):
             self.encoder_layers.append(tf.keras.layers.Dense(size, activation='tanh'))
 
         # Final encoder layer for producing cluster assignments
-        self.encoder_output_layer = tf.keras.layers.Dense(num_clusters, activation=None)
+        self.encoder_output_layer = tf.keras.layers.Dense(self.n_clusters, activation=None)
 
         # Build the decoder layers
         self.decoder_layers = []
@@ -95,7 +100,7 @@ class AutoClustering(tf.keras.Model):
         return tf.reduce_mean(tf.reduce_sum(tf.square(inputs - exemplars), axis=1))
 
 
-    def train(self, X, learning_rate=0.001, max_epochs=100, batch_size=32):
+    def fit_predict(self, X, learning_rate=0.001, max_epochs=100, batch_size=32):
         dataset = tf.data.Dataset.from_tensor_slices(tf.cast(X, tf.float32)).shuffle(100).batch(batch_size)
 
         # Optimizer
@@ -111,19 +116,17 @@ class AutoClustering(tf.keras.Model):
                     clusters, exemplars = self.call(batch, alpha)
                     loss = self.loss_function(batch, exemplars)
 
-                gradients = tape.gradient(loss, model.trainable_variables)
-                optimizer.apply_gradients(zip(gradients, model.trainable_variables))
+                gradients = tape.gradient(loss, self.trainable_variables)
+                optimizer.apply_gradients(zip(gradients, self.trainable_variables))
                 epoch_loss += loss.numpy()
 
             print(f"Epoch {epoch + 1}/{max_epochs}, Loss: {epoch_loss:.4f}, Alpha: {alpha:.2f}")
 
         # Extract final clusters
-        final_clusters, exemplars = model(X, self.alpha_final)
-        print(f"\nFinal clusters: \n{final_clusters}")
-        unique_clusters = tf.unique(tf.argmax(final_clusters, axis=1)).y.numpy()
-        print(f"Number of unique clusters: {len(unique_clusters)}")
+        final_clusters, exemplars = self.call(X, self.alpha_final)
+        predicted_labels = tf.argmax(final_clusters, axis=1).numpy()
 
-        return model, exemplars
+        return predicted_labels
 
 
     def plot(self, X):
@@ -167,27 +170,12 @@ class AutoClustering(tf.keras.Model):
 
 if __name__ == "__main__":
     # LOAD IRIS
-    # data = load_iris()
-    # ground_truth = data.target
-    # X = StandardScaler().fit_transform(data.data)
-
-    # LOAD 2d4c
-    # X, ground_truth = create_2d4c()
-    # X = StandardScaler().fit_transform(X)
-
-    # LOAD 2d10c
-    X, ground_truth = create_2d10c()
-    X = StandardScaler().fit_transform(X)
+    data = load_iris()
+    ground_truth = data.target
+    X = StandardScaler().fit_transform(data.data)
 
     print(X.shape)
 
-    # Hyperparameters
-    input_dim = X.shape[1]
-    # Encoder and decoder configs
-    encoder_layer_sizes = [16, 32, 16]
-    decoder_layer_sizes = [16, 32, 16]
-    num_clusters = len(np.unique(ground_truth))
 
-    model = AutoClustering(input_dim, encoder_layer_sizes, decoder_layer_sizes, num_clusters)
-    model.train(X)
-    model.plot(X)
+    model = AutoClustering(X.shape[1], 3)
+    model.fit_predict(X)

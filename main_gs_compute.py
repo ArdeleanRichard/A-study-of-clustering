@@ -10,7 +10,7 @@ from sklearn.metrics.cluster import contingency_matrix
 
 from constants import DIR_RESULTS
 from gs_algos import load_algorithms
-from gs_datasets import load_arff_data, load_all_data
+from gs_datasets import load_all_data
 
 
 def normalize_dbs(df):
@@ -44,6 +44,8 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
             for param_name in param_names:
                 if param_name == "n_clusters":
                     algo_details["param_grid"]["n_clusters"] = [len(np.unique(y_true))]
+                if param_name == "input_dim":
+                    algo_details["param_grid"]["input_dim"] = [X.shape[1]]
                 if param_name == "bandwidth":
                     bandwidth = estimate_bandwidth(X, quantile=0.1, n_samples=50)
                     algo_details["param_grid"]["bandwidth"].extend([bandwidth])
@@ -55,7 +57,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
             for params in param_combinations:
                 param_dict = dict(zip(param_names, params))
                 is_nondeterministic = any(
-                    key in param_dict for key in ["init", "random_state"]
+                    key in param_dict for key in ["init"]
                 )
 
                 scores_per_repeat = []
@@ -86,7 +88,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
                             "davies_bouldin_score": davies_bouldin,
                         })
                     except Exception as e:
-                        print(f"[ERROR] {algo_name}, {params}")
+                        print(f"[ERROR] {algo_name}, {params}, {e}")
                         scores_per_repeat.append({
                             "adjusted_rand_score": np.nan,
                             "adjusted_mutual_info_score": np.nan,
