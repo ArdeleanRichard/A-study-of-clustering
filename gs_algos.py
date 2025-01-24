@@ -1,4 +1,5 @@
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering, MeanShift, Birch, OPTICS, HDBSCAN, AffinityPropagation
+from clustpy.partition import DipInit
 
 from clustering_algos.DRLDBSCAN.main import DrlDbscanAlgorithm
 from clustering_algos.autoclustering import AutoClustering
@@ -77,14 +78,21 @@ def load_algorithms():
         #     },
         # },
 
-        "autoclustering": {
-            "estimator": AutoClustering,
-            "param_grid": {
-                "n_clusters": [2],
-                "input_dim": [1],
-                "init": ["random"]
-            },
-        },
+        # "autoclustering": {
+        #    "estimator": AutoClustering,
+        #    "param_grid": {
+        #        "n_clusters": [2],
+        #        "input_dim": [1],
+        #        "init": ["random"]
+        #    },
+        #},
+
+         "dipInit": {
+             "estimator": DipInit,
+             "param_grid": {
+                 "n_clusters": [2, 3, 4, 5],
+             },
+         },
 
     }
     return algorithms
