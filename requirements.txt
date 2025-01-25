@@ -8,3 +8,5 @@ ucimlrepo
 torch
 clustpy
 torchvision
+tensorflow
+clustpy

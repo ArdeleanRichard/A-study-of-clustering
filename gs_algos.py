@@ -1,5 +1,6 @@
 from clustpy.deep import ACeDeC, AEC, DCN, DDC, DEC, DeepECT, DipDECK, DipEncoder, DKM, ENRC, IDEC, VaDE, N2D
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering, MeanShift, Birch, OPTICS, HDBSCAN, AffinityPropagation
+from clustpy.partition import DipInit, DipNSub, ProjectedDipMeans
 
 from clustering_algos.DRLDBSCAN.main import DrlDbscanAlgorithm
 from clustering_algos.autoclustering_pytorch import AutoClustering
@@ -76,8 +77,45 @@ def load_algorithms():
                 "damping": [0.5, 0.7, 0.9],
                 "affinity": ['precomputed', "euclidean"],
                 "preference": [None, -50, -100, -150, -200, -220, -240],
+            }
+        },
+
+
+        # "autoclustering": {
+        #    "estimator": AutoClustering,
+        #    "param_grid": {
+        #        "n_clusters": [2],
+        #        "input_dim": [1],
+        #        "init": ["random"]
+        #    },
+        #},
+
+        # "dipInit": {
+        #     "estimator": DipInit,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
+        #     },
+        # },
+        # NEEDS Data to be 1-dimensional
+        "dipNSub": {
+            "estimator": DipNSub,
+            "param_grid": {
+                "outliers": [True, False],
+                "consider_duplicates": [True, False],
+                "threshold": [0.1, 0.15, 0.2, 0.5],
+                "significance": [0.05, 0.1, 0.2, 0.4],
             },
         },
+
+        # "projectedDipMeans": {
+        #     "estimator": ProjectedDipMeans,
+        #     "param_grid": {
+        #         "significance": [0.0005, 0.001, 0.005, 0.01],
+        #         "pval_strategy": ["table", "bootstrap"],
+        #         "n_split_trials": [5, 10, 15, 20],
+        #     },
+        # },
 
 
 
@@ -196,6 +234,7 @@ def load_algorithms():
 
 
     }
+
     return algorithms
 
 
