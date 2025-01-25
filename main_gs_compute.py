@@ -15,18 +15,18 @@ from gs_datasets import load_all_data
 
 def normalize_dbs(df):
     # df['davies_bouldin_score'] = 1 - df['davies_bouldin_score'] / df['davies_bouldin_score'].max() # doesnt work as well as I would like
-    df['davies_bouldin_score'] = 1 / (1 + df['davies_bouldin_score'])
+    df['norm_davies_bouldin_score'] = 1 / (1 + df['davies_bouldin_score'])
     return df
 
-def normalize_chs(df):
-    df['calinski_harabasz_score'] = np.log1p(df['calinski_harabasz_score'])
-    df['calinski_harabasz_score'] = df['calinski_harabasz_score'] / df['calinski_harabasz_score'].max()
-    return df
+# def normalize_chs(df):
+#     df['calinski_harabasz_score'] = np.log1p(df['calinski_harabasz_score'])
+#     df['calinski_harabasz_score'] = df['calinski_harabasz_score'] / df['calinski_harabasz_score'].max()
+#     return df
 
-def normalize_dbs_chs(df):
-    df = normalize_chs(df)
-    df = normalize_dbs(df)
-    return df
+# def normalize_dbs_chs(df):
+#     df = normalize_chs(df)
+#     df = normalize_dbs(df)
+#     return df
 
 def perform_grid_search(datasets, algorithms, n_repeats=10):
     for dataset_name, (X, y_true) in datasets:
@@ -56,9 +56,10 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
 
             for params in param_combinations:
                 param_dict = dict(zip(param_names, params))
-                is_nondeterministic = any(
-                    key in param_dict for key in ["init"]
-                )
+                # is_nondeterministic = any(
+                #     key in param_dict for key in ["init", "random_state"]
+                # )
+                is_nondeterministic = False
 
                 scores_per_repeat = []
 
@@ -77,7 +78,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
                             davies_bouldin = davies_bouldin_score(X, y_pred)
                         else:
                             print(f"[1CLUST] {algo_name}, {params}")
-                            ari = ami = purity = silhouette = calinski_harabasz = davies_bouldin = np.nan
+                            ari = ami = purity = silhouette = calinski_harabasz = davies_bouldin = -1
 
                         scores_per_repeat.append({
                             "adjusted_rand_score": ari,
@@ -90,12 +91,12 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
                     except Exception as e:
                         print(f"[ERROR] {algo_name}, {params}, {e}")
                         scores_per_repeat.append({
-                            "adjusted_rand_score": np.nan,
-                            "adjusted_mutual_info_score": np.nan,
-                            "purity_score": np.nan,
-                            "silhouette_score": np.nan,
-                            "calinski_harabasz_score": np.nan,
-                            "davies_bouldin_score": np.nan,
+                            "adjusted_rand_score": -1,
+                            "adjusted_mutual_info_score": -1,
+                            "purity_score": -1,
+                            "silhouette_score": -1,
+                            "calinski_harabasz_score": -1,
+                            "davies_bouldin_score": -1,
                         })
 
                 # Aggregate scores across repeats for nondeterministic algorithms
@@ -114,14 +115,11 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
 
             # Save results to CSV
             results_df = pd.DataFrame(results)
-            results_df = normalize_dbs_chs(results_df)
+            results_df = normalize_dbs(results_df)
             results_df.to_csv(DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv", index=False)
 
-# Step 4: Main execution
-def main():
+
+if __name__ == "__main__":
     datasets = load_all_data()
     algorithms = load_algorithms()
     perform_grid_search(datasets, algorithms)
-
-if __name__ == "__main__":
-    main()

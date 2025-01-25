@@ -6,3 +6,5 @@ scikit-learn
 scipy
 ucimlrepo
 torch
+clustpy
+torchvision

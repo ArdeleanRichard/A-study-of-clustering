@@ -9,31 +9,54 @@ from constants import DIR_RESULTS
 from gs_datasets import load_data_simple, load_data_hd, load_data_nonconvex, load_data_overlap_and_imbalance, load_data_imbalance, load_data_overlap
 from constants import DIR_FIGURES
 
+def normalize_chs(df):
+    df['norm_calinski_harabasz_score'] = np.log1p(df['calinski_harabasz_score'])
+    df['norm_calinski_harabasz_score'] = df['norm_calinski_harabasz_score'] / df['norm_calinski_harabasz_score'].max()
+    return df
+
 def transform_data_np(df, algorithms, datasets, scores, data_names):
     score_columns = [
         "adjusted_rand_score",
         "adjusted_mutual_info_score",
         "purity_score",
         "silhouette_score",
-        "calinski_harabasz_score",
-        "davies_bouldin_score"
+        "norm_calinski_harabasz_score",
+        "norm_davies_bouldin_score"
     ]
 
     # Initialize an array to store the scores
-    # Shape: (number of algorithms, number of datasets, number of scores)
     data = np.zeros((len(algorithms), len(data_names), len(score_columns)))
 
-    # Populate the array
-    for i, algorithm in enumerate(algorithms):
-        for j, dataset in enumerate(data_names):
-            if dataset in data_names:
-                # Filter rows for the current algorithm and dataset
-                row = df[(df["algorithm"] == algorithm) & (df["dataset"] == dataset)]
-                if not row.empty:
-                    # Extract the scores and store them in the array
-                    data[i, j, :] = row[score_columns].values[0]
+    # Populate the array and normalize per dataset
+    for j, dataset in enumerate(data_names):
+        # Filter rows for the current dataset
+        dataset_rows = df[df["dataset"] == dataset]
+
+        # Normalize scores for the dataset independently
+        dataset_normalized = dataset_rows.copy()
+        dataset_normalized[f"norm_calinski_harabasz_score"] = np.log1p(dataset_rows["calinski_harabasz_score"])  # Log normalization
+        dataset_normalized[f"norm_calinski_harabasz_score"] = dataset_normalized[f"norm_calinski_harabasz_score"] / dataset_normalized[f"norm_calinski_harabasz_score"].max()  # Min-max scaling
+
+        # Replace score columns with normalized versions
+        score_columns_norm = [
+            "adjusted_rand_score",
+            "adjusted_mutual_info_score",
+            "purity_score",
+            "silhouette_score",
+            "norm_calinski_harabasz_score",
+            "norm_davies_bouldin_score"
+        ]
+
+        # Update the normalized scores in the dataframe
+        for i, algorithm in enumerate(algorithms):
+            # Filter rows for the current algorithm
+            row = dataset_normalized[dataset_normalized["algorithm"] == algorithm]
+            if not row.empty:
+                # Extract the normalized scores and store them in the array
+                data[i, j, :] = row[score_columns_norm].values[0]
 
     return data
+
 
 def plot_hierarchical_visualization(title, df, data_names):
     algorithms = df["algorithm"].unique()

@@ -49,7 +49,6 @@ def extract_best_parameters(results_dir):
 
             # Compute priority score for each row
             df['priority_score'] = df.apply(compute_priority_score, axis=1)
-
             # Find the row with the best priority score
             best_row = df.loc[df['priority_score'].idxmax()]
 
@@ -70,5 +69,5 @@ def extract_best_parameters(results_dir):
     return summary_df
 
 # Run the function
-best_parameters_summary = extract_best_parameters(DIR_RESULTS+"grid_search/")
+best_parameters_summary = extract_best_parameters(DIR_RESULTS+"grid_search/test_norm/")
 print(best_parameters_summary)
