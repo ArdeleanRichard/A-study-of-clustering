@@ -100,8 +100,8 @@ def load_algorithms():
             "param_grid": {
                 "outliers": [True, False],
                 "consider_duplicates": [True, False],
-                "threshold": [0.05, 0.1, 0.15, 0.2, 0.5, 0.1],
-                "significance": [0.05, 0.1, 0.2, 0.4, 0.8, 1],
+                "threshold": [0.1, 0.15, 0.2, 0.5],
+                "significance": [0.05, 0.1, 0.2, 0.4],
             },
         },
         # "projectedDipMeans": {
