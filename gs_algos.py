@@ -1,6 +1,7 @@
 from clustpy.deep import ACeDeC, AEC, DCN, DDC, DEC, DeepECT, DipDECK, DipEncoder, DKM, ENRC, IDEC, VaDE, N2D
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering, MeanShift, Birch, OPTICS, HDBSCAN, AffinityPropagation
-from clustpy.partition import DipInit, DipNSub, ProjectedDipMeans, SpecialK
+from clustpy.partition import DipInit, DipMeans, DipNSub, GapStatistic, ProjectedDipMeans, SpecialK
+from clustpy.alternative import AutoNR, NrKmeans
 
 from clustering_algos.DRLDBSCAN.main import DrlDbscanAlgorithm
 from clustering_algos.autoclustering_pytorch import AutoClustering
@@ -8,77 +9,77 @@ from clustering_algos.autoclustering_pytorch import AutoClustering
 
 def load_algorithms():
     algorithms = {
-        "kmeans": {
-            "estimator": KMeans,
-            "param_grid": {
-                "n_clusters": [2, 3, 4, 5],
-                "init": ["k-means++", "random"],
-                "max_iter": [300, 500, 1000],
-            },
-        },
-        "dbscan": {
-            "estimator": DBSCAN,
-            "param_grid": {
-                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-                "min_samples": [1, 3, 5, 10, 15],
-            },
-        },
-        "agglomerative": {
-            "estimator": AgglomerativeClustering,
-            "param_grid": {
-                "n_clusters": [2, 3, 4, 5],
-                "linkage": ["ward", "complete", "average"],
-            },
-        },
-        "spectral": {
-            "estimator": SpectralClustering,
-            "param_grid": {
-                "n_clusters": [2, 3, 4, 5],
-                "affinity": ["nearest_neighbors", "rbf"],
-                "n_neighbors": [5, 10,20],
-                "random_state": [42],
-            },
-        },
-        "meanshift": {
-            "estimator": MeanShift,
-            "param_grid": {
-                "bandwidth": [None, 0.1, 0.2, 0.3],
-                "bin_seeding": [True, False],
-                "max_iter": [300, 500, 1000],
-            },
-        },
-        "birch": {
-            "estimator": Birch,
-            "param_grid": {
-                "n_clusters": [2, 3, 4, 5],
-                "threshold": [0.01, 0.025, 0.05, 0.1, 0.3, 0.5, 0.7],
-                "branching_factor": [30, 40, 50, 60, 70],
-            },
-        },
-        "optics": {
-            "estimator": OPTICS,
-            "param_grid": {
-                "min_samples": [5, 10, 15],
-                "xi": [0.01, 0.025, 0.05, 0.1, 0.2],
-                "min_cluster_size": [0.01, 0.025, 0.05, 0.1, 0.2],
-            },
-        },
-        "hdbscan": {
-            "estimator": HDBSCAN,
-            "param_grid": {
-                "min_cluster_size": [5, 10, 15],
-                "metric": ["euclidean", "manhattan"],
-                "leaf_size": [25, 40, 70, 100]
-            },
-        },
-        "affinity": {
-            "estimator": AffinityPropagation,
-            "param_grid": {
-                "damping": [0.5, 0.7, 0.9],
-                "affinity": ['precomputed', "euclidean"],
-                "preference": [None, -50, -100, -150, -200, -220, -240],
-            }
-        },
+        # "kmeans": {
+        #     "estimator": KMeans,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "init": ["k-means++", "random"],
+        #         "max_iter": [300, 500, 1000],
+        #     },
+        # },
+        # "dbscan": {
+        #     "estimator": DBSCAN,
+        #     "param_grid": {
+        #         "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+        #         "min_samples": [1, 3, 5, 10, 15],
+        #     },
+        # },
+        # "agglomerative": {
+        #     "estimator": AgglomerativeClustering,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "linkage": ["ward", "complete", "average"],
+        #     },
+        # },
+        # "spectral": {
+        #     "estimator": SpectralClustering,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "affinity": ["nearest_neighbors", "rbf"],
+        #         "n_neighbors": [5, 10,20],
+        #         "random_state": [42],
+        #     },
+        # },
+        # "meanshift": {
+        #     "estimator": MeanShift,
+        #     "param_grid": {
+        #         "bandwidth": [None, 0.1, 0.2, 0.3],
+        #         "bin_seeding": [True, False],
+        #         "max_iter": [300, 500, 1000],
+        #     },
+        # },
+        # "birch": {
+        #     "estimator": Birch,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "threshold": [0.01, 0.025, 0.05, 0.1, 0.3, 0.5, 0.7],
+        #         "branching_factor": [30, 40, 50, 60, 70],
+        #     },
+        # },
+        # "optics": {
+        #     "estimator": OPTICS,
+        #     "param_grid": {
+        #         "min_samples": [5, 10, 15],
+        #         "xi": [0.01, 0.025, 0.05, 0.1, 0.2],
+        #         "min_cluster_size": [0.01, 0.025, 0.05, 0.1, 0.2],
+        #     },
+        # },
+        # "hdbscan": {
+        #     "estimator": HDBSCAN,
+        #     "param_grid": {
+        #         "min_cluster_size": [5, 10, 15],
+        #         "metric": ["euclidean", "manhattan"],
+        #         "leaf_size": [25, 40, 70, 100]
+        #     },
+        # },
+        # "affinity": {
+        #     "estimator": AffinityPropagation,
+        #     "param_grid": {
+        #         "damping": [0.5, 0.7, 0.9],
+        #         "affinity": ['precomputed', "euclidean"],
+        #         "preference": [None, -50, -100, -150, -200, -220, -240],
+        #     }
+        # },
 
 
         # "autoclustering": {
@@ -95,6 +96,22 @@ def load_algorithms():
         #     "param_grid": {
         #         "n_clusters": [2, 3, 4, 5],
         #         "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
+        #     },
+        # },
+        # "dipMeans": {
+        #         "estimator": DipMeans,
+        #         "param_grid": {
+        #             "significance": [0.0005, 0.001, 0.005, 0.01, 0.1],
+        #             "split_viewers_threshold": [0.005, 0.01, 0.05, 0.1],
+        #             "pval_strategy": ["table", "function", "bootstrap"],
+        #         },
+        #     },
+        # "gapStatistic": {
+        #     "estimator": GapStatistic,
+        #     "param_grid": {
+        #         "n_boots": [5, 10, 15, 20, 30],
+        #         "use_principal_components": [True, False],
+        #         "use_log": [True, False],
         #     },
         # },
         # NEEDS Data to be 1-dimensional
@@ -126,6 +143,24 @@ def load_algorithms():
 
 
 
+
+        # Alternative Clustering:
+        "autoNR": {
+            "estimator": AutoNR,
+            "param_grid": {
+                "nrkmeans_repetitions": [10, 15, 20],
+                "outliers": [True, False],
+            },
+        },
+        "NR-Kmeans": {
+            "estimator": NrKmeans,
+            "param_grid": {
+                "n_clusters": [2, 3, 4, 5],
+                "outliers": [True, False],
+                "max_iter": [200, 300, 400, 500],
+                "n_init": [1, 2, 3],
+            },
+        },
 
 
     #     # DEEP CLUSTERINGS:
