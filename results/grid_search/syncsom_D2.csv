@@ -1,0 +1,7 @@
+rows,cols,radius,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+5,5,0.01,0.7704700580163719,0.7821468482153198,0.972,0.22750956538002606,402.9927016993782,2.615630041602204,0.2765769695720493
+5,5,0.05,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+5,5,0.1,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+5,5,0.3,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+5,5,0.5,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+5,5,1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
