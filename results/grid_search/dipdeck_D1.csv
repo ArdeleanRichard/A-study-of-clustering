@@ -1,21 +1,4 @@
-n_clusters_init,dip_merge_threshold ,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
-2,0.1,,,,,,,
-2,0.3,,,,,,,
-2,0.5,,,,,,,
-2,0.7,,,,,,,
-2,0.9,,,,,,,
-3,0.1,,,,,,,
-3,0.3,,,,,,,
-3,0.5,,,,,,,
-3,0.7,,,,,,,
-3,0.9,,,,,,,
-5,0.1,,,,,,,
-5,0.3,,,,,,,
-5,0.5,,,,,,,
-5,0.7,,,,,,,
-5,0.9,,,,,,,
-10,0.1,,,,,,,
-10,0.3,,,,,,,
-10,0.5,,,,,,,
-10,0.7,,,,,,,
-10,0.9,,,,,,,
+n_clusters_init,embedding_size,dip_merge_threshold,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+3,2,0.5,0.9791686930598544,0.9651612299105327,0.993,0.6511639733672071,3024.8572597268176,0.4909545340672006,0.6707112639257233
+3,5,0.5,0.9791686930598544,0.9651612299105327,0.993,0.6511639733672071,3024.857259726817,0.4909545340672006,0.6707112639257233
+3,10,0.5,0.9674656426335413,0.9510365651625939,0.989,0.6502295611104099,3014.8898991161054,0.49251740285368023,0.6700089379782164

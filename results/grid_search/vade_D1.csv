@@ -1,2 +1,4 @@
-n_clusters ,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
-2,,,,,,,
+n_clusters,embedding_size,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+3,2,0.9791686930598544,0.9651612299105327,0.993,0.6511657471246135,3025.3806552800916,0.4905943695705031,0.6708733243693508
+3,5,0.9473472101404123,0.9321747612124043,0.982,0.6387988326817607,2789.635732559285,0.5119738674620979,0.6613870924095637
+3,10,0.938849978234631,0.9201764490354423,0.979,0.6442190575011939,2948.7100507435953,0.4932529603805709,0.6696789000472765

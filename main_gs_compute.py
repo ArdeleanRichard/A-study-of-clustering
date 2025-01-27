@@ -42,13 +42,15 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
             # SPECIAL PARAMS
             # -------------
             for param_name in param_names:
-                if param_name == "n_clusters":
-                    algo_details["param_grid"]["n_clusters"] = [len(np.unique(y_true))]
+                if param_name == "n_clusters" or param_name == "number_clusters" or param_name == "n_clusters_init" or param_name == "amount_clusters":
+                    algo_details["param_grid"][param_name] = [len(np.unique(y_true))]
                 if param_name == "input_dim":
-                    algo_details["param_grid"]["input_dim"] = [X.shape[1]]
+                    algo_details["param_grid"][param_name] = [X.shape[1]]
+                if param_name == "maximum_clusters":
+                    algo_details["param_grid"][param_name] = [len(np.unique(y_true))+1]
                 if param_name == "bandwidth":
                     bandwidth = estimate_bandwidth(X, quantile=0.1, n_samples=50)
-                    algo_details["param_grid"]["bandwidth"].extend([bandwidth])
+                    algo_details["param_grid"][param_name].extend([bandwidth])
             # -------------
 
 

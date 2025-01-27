@@ -6,7 +6,7 @@ scikit-learn
 scipy
 ucimlrepo
 torch
-clustpy
 torchvision
 tensorflow
 clustpy
+pyclustering
