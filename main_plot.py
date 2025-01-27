@@ -10,7 +10,7 @@ from gs_datasets import load_data_simple, load_data_hd, load_data_nonconvex, loa
 from constants import DIR_FIGURES
 
 def normalize_chs(df):
-    df['norm_calinski_harabasz_score'] = np.log1p(df['calinski_harabasz_score'])
+    df['norm_calinski_harabasz_score'] = np.log1p(1+df['calinski_harabasz_score'])
     df['norm_calinski_harabasz_score'] = df['norm_calinski_harabasz_score'] / df['norm_calinski_harabasz_score'].max()
     return df
 

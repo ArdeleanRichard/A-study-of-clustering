@@ -1,6 +1,9 @@
 from clustpy.deep import ACeDeC, AEC, DCN, DDC, DEC, DeepECT, DipDECK, DipEncoder, DKM, ENRC, IDEC, VaDE, N2D
+from clustpy.density import MultiDensityDBSCAN
+from clustpy.hierarchical import Diana
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering, MeanShift, Birch, OPTICS, HDBSCAN, AffinityPropagation
-from clustpy.partition import DipInit, DipMeans, DipNSub, GapStatistic, ProjectedDipMeans, SpecialK
+from clustpy.partition import DipInit, DipMeans, DipNSub, GapStatistic, ProjectedDipMeans, SpecialK, XMeans, SkinnyDip, PGMeans, LDAKmeans, GMeans
+from clustpy.partition.subkmeans import SubKmeans
 from clustpy.alternative import AutoNR, NrKmeans
 
 from clustering_algos.DRLDBSCAN.main import DrlDbscanAlgorithm
@@ -85,23 +88,23 @@ def load_algorithms():
 
 
 
-        # "dipInit": {
-        #     "estimator": DipInit,
-        #     "param_grid": {
-        #         "n_clusters": [2, 3, 4, 5],
-        #         "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
-        #     },
-        # },
+        "dipInit": {
+            "estimator": DipInit,
+            "param_grid": {
+                "n_clusters": [2, 3, 4, 5],
+                "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
+            },
+        },
         # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
-        # "dipNSub": {
-        #     "estimator": DipNSub,
-        #     "param_grid": {
-        #         "outliers": [True, False],
-        #         "consider_duplicates": [True, False],
-        #         "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
-        #         "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1,],
-        #     },
-        # },
+        "dipNSub": {
+            "estimator": DipNSub,
+            "param_grid": {
+                "outliers": [True, False],
+                "consider_duplicates": [True, False],
+                "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
+                "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1,],
+            },
+        },
 
         # "dipMeans": {
         #         "estimator": DipMeans,
@@ -119,65 +122,126 @@ def load_algorithms():
         #         "use_log": [True, False],
         #     },
         # },
-        # NEEDS Data to be 1-dimensional
-        # "dipNSub": {
-        #     "estimator": DipNSub,
-        #     "param_grid": {
-        #         "outliers": [True, False],
-        #         "consider_duplicates": [True, False],
-        #         "threshold": [0.1, 0.15, 0.2, 0.5, 1],
-        #         "significance": [0.0005, 0.001, 0.005, 0.01, 0.1],
-        #     },
-        # },
-        # "projectedDipMeans": {
-        #     "estimator": ProjectedDipMeans,
-        #     "param_grid": {
-        #         "significance": [0.0005, 0.001, 0.002, 0.005, 0.01, 0.015, 0.02, 0.1],
-        #         "pval_strategy": ["table", "bootstrap", "function"],
-        #         "n_split_trials": [5, 10, 12, 15, 18, 20, 25],
-        #     },
-        # },
-        # "specialK": {
-        #     "estimator": SpecialK,
+
+        # "gmeans": {
+        #     "estimator": GMeans,
         #     "param_grid": {
         #         "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
-        #         "similarity_matrix": ["NAM", "SAM"],
-        #         "n_neighbors": [3, 5, 10, 15, 20],
+        #         "n_clusters_init": [2],
+        #         "n_split_trials": [1, 2, 5, 10, 20],
+        #     },
+        # },
+        # "ldakmeans": {
+        #     "estimator": LDAKmeans,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "max_iter": [300, 500, 1000],
+        #         "n_init": [1,2,5,10],
+        #     },
+        # },
+        # "pgmeans": {
+        #     "estimator": PGMeans,
+        #     "param_grid": {
+        #         "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
+        #         "n_projections": [None, 1],
+        #         "n_samples": [None, 1],
+        #     },
+        # },
+        "projectedDipMeans": {
+            "estimator": ProjectedDipMeans,
+            "param_grid": {
+                "significance": [0.0005, 0.001, 0.002, 0.005, 0.01, 0.015, 0.02, 0.1],
+                "pval_strategy": ["table", "bootstrap", "function"],
+                "n_split_trials": [5, 10, 12, 15, 18, 20, 25],
+            },
+        },
+
+        # "skinnydip": {
+        #     "estimator": SkinnyDip,
+        #     "param_grid": {
+        #         "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
+        #         "pval_strategy": ["table", "bootstrap", "function"],
+        #     },
+        # },
+        "specialK": {
+            "estimator": SpecialK,
+            "param_grid": {
+                "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
+                "similarity_matrix": ["NAM", "SAM"],
+                "n_neighbors": [3, 5, 10, 15, 20],
+            },
+        },
+        # "subkmeans": {
+        #     "estimator": SubKmeans,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "max_iter": [300,500,1000],
+        #     },
+        # },
+        # "xmeans": {
+        #     "estimator": XMeans,
+        #     "param_grid": {
+        #         "n_clusters_init": [2, 3, 4, 5],
+        #     },
+        # },
+
+
+
+        # ### Density-based Clustering:
+        # "mddbscan": {
+        #     "estimator": MultiDensityDBSCAN,
+        #     "param_grid": {
+        #         "k": [3,5,10,15,20,30],
+        #         "var": [1, 1.5, 2, 2.5, 3, 3.5, 4],
+        #         "min_cluster_size": [5, 10, 15],
+        #     },
+        # },
+        #
+        # ### Hierarchical Clustering:
+        # "diana": {
+        #     "estimator": Diana,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
         #     },
         # },
 
 
 
 
-        # Alternative Clustering:
-        "autoNR": {
-            "estimator": AutoNR,
-            "param_grid": {
-                "nrkmeans_repetitions": [10, 15, 20],
-                "outliers": [True, False],
-            },
-        },
-        "NR-Kmeans": {
-            "estimator": NrKmeans,
-            "param_grid": {
-                "n_clusters": [2, 3, 4, 5],
-                "outliers": [True, False],
-                "max_iter": [200, 300, 400, 500],
-                "n_init": [1, 2, 3],
-            },
-        },
-
-
-    #     # DEEP CLUSTERINGS:
-
-        # "autoclustering": {
-        #    "estimator": AutoClustering,
-        #    "param_grid": {
-        #        "n_clusters": [2],
-        #        "input_dim": [1],
-        #        "init": ["random"]
-        #    },
+        ### Alternative Clustering:
+        # labels_pred must be 1D: shape is (788, 2)
+        # "autoNR": {
+        #     "estimator": AutoNR,
+        #     "param_grid": {
+        #         "nrkmeans_repetitions": [10, 15, 20],
+        #         "outliers": [True, False],
+        #     },
         # },
+        # # 'int' object has no attribute 'copy'
+        # "NR-Kmeans": {
+        #     "estimator": NrKmeans,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "outliers": [True, False],
+        #         "max_iter": [200, 300, 400, 500],
+        #         "n_init": [1, 2, 3],
+        #     },
+        # },
+
+
+
+
+
+        ### DEEP CLUSTERINGS:
+
+        "autoclustering": {
+           "estimator": AutoClustering,
+           "param_grid": {
+               "n_clusters": [2],
+               "input_dim": [1],
+               "init": ["random"]
+           },
+        },
 
     #     "acedec": {
     #         "estimator": ACeDeC,

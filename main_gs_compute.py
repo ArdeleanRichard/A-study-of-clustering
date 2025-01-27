@@ -53,6 +53,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
 
 
             param_combinations = list(itertools.product(*algo_details["param_grid"].values()))
+            print(dataset_name, algo_name)
 
             for params in param_combinations:
                 param_dict = dict(zip(param_names, params))
@@ -89,14 +90,6 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
                             "davies_bouldin_score": davies_bouldin,
                         })
 
-                        print({
-                            "adjusted_rand_score": ari,
-                            "adjusted_mutual_info_score": ami,
-                            "purity_score": purity,
-                            "silhouette_score": silhouette,
-                            "calinski_harabasz_score": calinski_harabasz,
-                            "davies_bouldin_score": davies_bouldin,
-                        })
                     except Exception as e:
                         print(f"[ERROR] {algo_name}, {params}, {e}")
                         scores_per_repeat.append({
