@@ -23,6 +23,7 @@ from clustpy.alternative import AutoNR, NrKmeans
 
 from clustering_algos.Algorithms import create_algorithm_wrapper
 from clustering_algos.DRLDBSCAN.main import DrlDbscanAlgorithm
+from clustering_algos.MDBSCAN import MDBSCAN
 from clustering_algos.autoclustering_pytorch import AutoClustering
 
 
@@ -212,7 +213,16 @@ def load_algorithms():
         #         "min_cluster_size": [5, 10, 15],
         #     },
         # },
-        #
+        # "mdbscan": {
+        #     "estimator": MDBSCAN,
+        #     "param_grid": {
+        #         "k": [2,3,4,5,30],
+        #         "t": [0.01, 0.025, 0.05, 0.1],
+        #         "eps": [0.01, 0.025, 0.05, 0.1],
+        #         "min_samples": [3, 5, 10],
+        #     },
+        # },
+
         # ### Hierarchical Clustering:
         # "diana": {
         #     "estimator": Diana,
@@ -263,16 +273,20 @@ def load_algorithms():
         #     "estimator": ACeDeC,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "init": ["acedec"], # , 'subkmeans', 'random', 'sgd'],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [2],  # for low-dim datasets
+        #         # "init": ["acedec"],
+        #         "init": ["acedec", 'subkmeans', 'random', 'sgd'],
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
         #         # "embedding_size": [10, 20, 30], # for high-dim datasets
         #         # "embedding_size": [20, 30, 40, 50, 60, 70],
         #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
         #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-        #         # "pretrain_epochs": [100, 150, 200],
-        #         # "clustering_epochs": [100, 150, 200],
+        #         "pretrain_epochs": [200],
+        #         "clustering_epochs": [200],
         #         # "batch_size": [32, 64, 128],
         #
+        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
         #     },
         # },
         # "aec": {
@@ -402,99 +416,100 @@ def load_algorithms():
 
 
     # PYCLUSTERING:
-        "bang": {
-            "estimator": create_algorithm_wrapper(bang),
-            "param_grid": {
-                "levels": [5, 7, 9, 10, 12, 14, 15, 17, 18, 20],
-            },
-        },
-        "bsas": {
-            "estimator": create_algorithm_wrapper(bsas),
-            "param_grid": {
-                "maximum_clusters": [2],
-                "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-            },
-        },
+    #     "bang": {
+    #         "estimator": create_algorithm_wrapper(bang),
+    #         "param_grid": {
+    #             "levels": [5, 7, 9, 10, 12, 14, 15, 17, 18, 20],
+    #         },
+    #     },
+    #     "bsas": {
+    #         "estimator": create_algorithm_wrapper(bsas),
+    #         "param_grid": {
+    #             "maximum_clusters": [2],
+    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+    #         },
+    #     },
+    #
+    #     # # infinite run
+    #     # "clarans": {
+    #     #     "estimator": create_algorithm_wrapper(clarans),
+    #     #     "param_grid": {
+    #     #         "number_clusters": [2],
+    #     #         "numlocal": [100, 300, 1000],
+    #     #         "maxneighbor": [5, 10, 15, 20],
+    #     #     },
+    #     # },
+    #     "clique": {
+    #         "estimator": create_algorithm_wrapper(clique),
+    #         "param_grid": {
+    #             "amount_intervals": [5, 10, 25, 50],
+    #             "density_threshold": [3, 5, 10, 15],
+    #         },
+    #     },
+    #     "cure": {
+    #         "estimator": create_algorithm_wrapper(cure),
+    #         "param_grid": {
+    #             "number_cluster": [2],
+    #             "number_represent_points": [3, 5, 10, 15],
+    #             "compression": [0.1, 0.25, 0.5, 0.75, 0.9],
+    #         },
+    #     },
+    #
+    #     # # internal error 'hsyncnet' object has no attribute 'get_clusters'
+    #     # "hsyncnet": {
+    #     #     "estimator": create_algorithm_wrapper(hsyncnet),
+    #     #     "param_grid": {
+    #     #         "number_clusters": [2],
+    #     #         "initial_neighbors": [3, 5, 10, 15],
+    #     #         "increase_persent": [0.05, 0.1, 0.15, 0.2, 0.25],
+    #     #     },
+    #     # },
+    #
+    #     "mbsas": {
+    #         "estimator": create_algorithm_wrapper(mbsas),
+    #         "param_grid": {
+    #             "maximum_clusters": [2],
+    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+    #         },
+    #     },
 
-        # # infinite run
-        # "clarans": {
-        #     "estimator": create_algorithm_wrapper(clarans),
-        #     "param_grid": {
-        #         "number_clusters": [2],
-        #         "numlocal": [100, 300, 1000],
-        #         "maxneighbor": [5, 10, 15, 20],
-        #     },
-        # },
-        "clique": {
-            "estimator": create_algorithm_wrapper(clique),
-            "param_grid": {
-                "amount_intervals": [5, 10, 25, 50],
-                "density_threshold": [3, 5, 10, 15],
-            },
-        },
-        "cure": {
-            "estimator": create_algorithm_wrapper(cure),
-            "param_grid": {
-                "number_cluster": [2],
-                "number_represent_points": [3, 5, 10, 15],
-                "compression": [0.1, 0.25, 0.5, 0.75, 0.9],
-            },
-        },
-
-        # # internal error 'hsyncnet' object has no attribute 'get_clusters'
-        # "hsyncnet": {
-        #     "estimator": create_algorithm_wrapper(hsyncnet),
-        #     "param_grid": {
-        #         "number_clusters": [2],
-        #         "initial_neighbors": [3, 5, 10, 15],
-        #         "increase_persent": [0.05, 0.1, 0.15, 0.2, 0.25],
-        #     },
-        # },
-
-        "mbsas": {
-            "estimator": create_algorithm_wrapper(mbsas),
-            "param_grid": {
-                "maximum_clusters": [2],
-                "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-            },
-        },
-        # "rock": { # infinite run on unbalance
-        #     "estimator": create_algorithm_wrapper(rock),
-        #     "param_grid": {
-        #         "number_clusters": [2],
-        #         "eps": [0.01, 0.05, 0.1, 0.2],
-        #         "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-        #     },
-        # },
-        "somsc": {
-            "estimator": create_algorithm_wrapper(somsc),
-            "param_grid": {
-                "amount_clusters": [2],
-                "epouch": [100, 300, 500],
-            },
-        },
-        # # internal error 'syncnet' object has no attribute 'get_clusters'
-        # "syncnet": {
-        #     "estimator": create_algorithm_wrapper(syncnet),
-        #     "param_grid": {
-        #         "radius": [0.01, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
-        #     },
-        # },
-        "syncsom": {
-            "estimator": create_algorithm_wrapper(syncsom),
-            "param_grid": {
-                "rows": [5],
-                "cols": [5],
-                "radius": [0.01, 0.05, 0.1, 0.3, 0.5, 1.0],
-            },
-        },
-        "ttsas": {
-            "estimator": create_algorithm_wrapper(ttsas),
-            "param_grid": {
-                "threshold1": [0.01, 0.03, 0.05, 0.075, 0.1],
-                "threshold2": [0.05, 0.075, 0.1, 0.15, 0.2],
-            },
-        },
+    #     "rock": { #blocked on unbalance
+    #         "estimator": create_algorithm_wrapper(rock),
+    #         "param_grid": {
+    #             "number_clusters": [2],
+    #             "eps": [0.01, 0.05, 0.1, 0.2],
+    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+    #         },
+    #     },
+    #     "somsc": {
+    #         "estimator": create_algorithm_wrapper(somsc),
+    #         "param_grid": {
+    #             "amount_clusters": [2],
+    #             "epouch": [100, 300, 500],
+    #         },
+    #     },
+    #     # # internal error 'syncnet' object has no attribute 'get_clusters'
+    #     # "syncnet": {
+    #     #     "estimator": create_algorithm_wrapper(syncnet),
+    #     #     "param_grid": {
+    #     #         "radius": [0.01, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
+    #     #     },
+    #     # },
+    #     "syncsom": {
+    #         "estimator": create_algorithm_wrapper(syncsom),
+    #         "param_grid": {
+    #             "rows": [5],
+    #             "cols": [5],
+    #             "radius": [0.01, 0.05, 0.1, 0.3, 0.5, 1.0],
+    #         },
+    #     },
+    #     "ttsas": {
+    #         "estimator": create_algorithm_wrapper(ttsas),
+    #         "param_grid": {
+    #             "threshold1": [0.01, 0.03, 0.05, 0.075, 0.1],
+    #             "threshold2": [0.05, 0.075, 0.1, 0.15, 0.2],
+    #         },
+    #     },
 
 
 
@@ -503,7 +518,25 @@ def load_algorithms():
 
     return algorithms
 
-
+### Alternative Clustering:
+# labels_pred must be 1D: shape is (788, 2)
+# "autoNR": {
+#     "estimator": AutoNR,
+#     "param_grid": {
+#         "nrkmeans_repetitions": [10, 15, 20],
+#         "outliers": [True, False],
+#     },
+# },
+# # 'int' object has no attribute 'copy'
+# "NR-Kmeans": {
+#     "estimator": NrKmeans,
+#     "param_grid": {
+#         "n_clusters": [2, 3, 4, 5],
+#         "outliers": [True, False],
+#         "max_iter": [200, 300, 400, 500],
+#         "n_init": [1, 2, 3],
+#     },
+# },
 
 # NOT A CLUSTERING ALGORITHM
 # "drldbscan": {

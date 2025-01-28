@@ -1,0 +1,5 @@
+n_clusters,embedding_size,init,pretrain_epochs,clustering_epochs,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+4,2,acedec,200,200,-1,-1,-1,-1,-1,-1,inf
+4,2,subkmeans,200,200,-1,-1,-1,-1,-1,-1,inf
+4,2,random,200,200,-1,-1,-1,-1,-1,-1,inf
+4,2,sgd,200,200,-1,-1,-1,-1,-1,-1,inf

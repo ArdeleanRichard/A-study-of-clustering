@@ -13,6 +13,16 @@ from gs_algos import load_algorithms
 from gs_datasets import load_all_data
 
 
+
+# RUNS REQUIRED:
+# PYCLUSTERING ALGS FROM unbalance-> as rock seems to have blocked
+# RALUCA: dipNSub all HD datasets, needs rerun (out of date csv version)
+# ALL DEEPCLUSTERING on all HD datasets
+
+# RICI: [RUNNING] MDBSCAN(2024) on data until HD dataset
+
+
+
 def normalize_dbs(df):
     # df['davies_bouldin_score'] = 1 - df['davies_bouldin_score'] / df['davies_bouldin_score'].max() # doesnt work as well as I would like
     df['norm_davies_bouldin_score'] = 1 / (1 + df['davies_bouldin_score'])
@@ -91,6 +101,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10):
                             "calinski_harabasz_score": calinski_harabasz,
                             "davies_bouldin_score": davies_bouldin,
                         })
+                        print(param_dict)
 
                     except Exception as e:
                         print(f"[ERROR] {algo_name}, {params}, {e}")
