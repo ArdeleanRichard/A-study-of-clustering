@@ -104,13 +104,13 @@ def load_algorithms():
 
 
 
-        # "dipInit": {
-        #     "estimator": DipInit,
-        #     "param_grid": {
-        #         "n_clusters": [2, 3, 4, 5],
-        #         "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
-        #     },
-        # },
+        "dipInit": {
+            "estimator": DipInit,
+            "param_grid": {
+                "n_clusters": [2, 3, 4, 5],
+                "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
+            },
+        },
         # # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
         # "dipNSub": {
         #     "estimator": DipNSub,
@@ -163,7 +163,7 @@ def load_algorithms():
         #         "n_samples": [None, 1],
         #     },
         # },
-        # "projectedDipMeans": {
+        # "projectedDipMeans": { # > yeast data - infinite loop
         #     "estimator": ProjectedDipMeans,
         #     "param_grid": {
         #         "significance": [0.0005, 0.001, 0.002, 0.005, 0.01, 0.015, 0.02, 0.1],
@@ -179,14 +179,14 @@ def load_algorithms():
         #         "pval_strategy": ["table", "bootstrap", "function"],
         #     },
         # },
-        # "specialK": {
-        #     "estimator": SpecialK,
-        #     "param_grid": {
-        #         "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
-        #         "similarity_matrix": ["NAM", "SAM"],
-        #         "n_neighbors": [3, 5, 10, 15, 20],
-        #     },
-        # },
+        "specialK": {
+            "estimator": SpecialK,
+            "param_grid": {
+                "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
+                "similarity_matrix": ["NAM", "SAM"],
+                "n_neighbors": [3, 5, 10, 15, 20],
+            },
+        },
         # "subkmeans": {
         #     "estimator": SubKmeans,
         #     "param_grid": {
@@ -259,133 +259,134 @@ def load_algorithms():
         #    },
         # },
 
-        "acedec": {
-            "estimator": ACeDeC,
-            "param_grid": {
-                "n_clusters": [2],
-                "init": ["acedec"], # , 'subkmeans', 'random', 'sgd'],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "embedding_size": [20, 30, 40, 50, 60, 70],
-                # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-                # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-                # "pretrain_epochs": [100, 150, 200],
-                # "clustering_epochs": [100, 150, 200],
-                # "batch_size": [32, 64, 128],
+        # "acedec": {
+        #     "estimator": ACeDeC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "init": ["acedec"], # , 'subkmeans', 'random', 'sgd'],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [20, 30, 40, 50, 60, 70],
+        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
+        #         # "pretrain_epochs": [100, 150, 200],
+        #         # "clustering_epochs": [100, 150, 200],
+        #         # "batch_size": [32, 64, 128],
+        #
+        #     },
+        # },
+        # "aec": {
+        #     "estimator": AEC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "dcn": {
+        #     "estimator": DCN,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "ddc": {
+        #     "estimator": DDC,
+        #     "param_grid": {
+        #         "ratio": [0.01, 0.05, 0.1, 0.2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "dec": {
+        #     "estimator": DEC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "deepect": {
+        #     "estimator": DeepECT,
+        #     "param_grid": {
+        #         "max_n_leaf_nodes": [1,2,3,4,5, 10], #, 20, 50, 100],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        #
+        # "dipdeck": {
+        #     "estimator": DipDECK,
+        #     "param_grid": {
+        #         "n_clusters_init": [2,3,5,10],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         "dip_merge_threshold": [0.5],
+        #         # "dip_merge_threshold": [0.1, 0.3, 0.5, 0.7, 0.9],
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "dipencoder": {
+        #     "estimator": DipEncoder,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "dkm": {
+        #     "estimator": DKM,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "enrc": {
+        #     "estimator": ENRC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "idec": {
+        #     "estimator": IDEC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "n2d": {
+        #     "estimator": N2D,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
+        # "vade": {
+        #     "estimator": VaDE,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
 
-            },
-        },
-        "aec": {
-            "estimator": AEC,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "dcn": {
-            "estimator": DCN,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "ddc": {
-            "estimator": DDC,
-            "param_grid": {
-                "ratio": [0.01, 0.05, 0.1, 0.2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "dec": {
-            "estimator": DEC,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "deepect": {
-            "estimator": DeepECT,
-            "param_grid": {
-                "max_n_leaf_nodes": [1,2,3,4,5, 10], #, 20, 50, 100],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-
-        "dipdeck": {
-            "estimator": DipDECK,
-            "param_grid": {
-                "n_clusters_init": [2,3,5,10],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                "dip_merge_threshold": [0.5],
-                # "dip_merge_threshold": [0.1, 0.3, 0.5, 0.7, 0.9],
-                # "random_state ": [42]
-            },
-        },
-        "dipencoder": {
-            "estimator": DipEncoder,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "dkm": {
-            "estimator": DKM,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "enrc": {
-            "estimator": ENRC,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "idec": {
-            "estimator": IDEC,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "n2d": {
-            "estimator": N2D,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
-        "vade": {
-            "estimator": VaDE,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30], # for high-dim datasets
-                # "random_state ": [42]
-            },
-        },
     #     "autoclustering": {
     #         "estimator": AutoClustering,
     #         "param_grid": {
@@ -401,93 +402,102 @@ def load_algorithms():
 
 
     # PYCLUSTERING:
-        "bang": {
-            "estimator": create_algorithm_wrapper(bang),
-            "param_grid": {
-                "levels": [5, 7, 9, 10, 12, 14, 15, 17, 18, 20],
-            },
-        },
-        "bsas": {
-            "estimator": create_algorithm_wrapper(bsas),
-            "param_grid": {
-                "maximum_clusters": [2],
-                "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-            },
-        },
-        "clarans": {
-            "estimator": create_algorithm_wrapper(clarans),
-            "param_grid": {
-                "number_clusters": [2],
-                "numlocal": [100, 300, 1000],
-                "maxneighbor": [5, 10, 15, 20],
-            },
-        },
-        "clique": {
-            "estimator": create_algorithm_wrapper(clique),
-            "param_grid": {
-                "amount_intervals": [5, 10, 25, 50],
-                "density_threshold": [3, 5, 10, 15],
-            },
-        },
-        "cure": {
-            "estimator": create_algorithm_wrapper(cure),
-            "param_grid": {
-                "number_cluster": [2],
-                "number_represent_points": [3, 5, 10, 15],
-                "compression": [0.1, 0.25, 0.5, 0.75, 0.9],
-            },
-        },
-        "hsyncnet": {
-            "estimator": create_algorithm_wrapper(hsyncnet),
-            "param_grid": {
-                "number_cluster": [2],
-                "initial_neighbors": [3, 5, 10, 15],
-                "increase_persent": [0.05, 0.1, 0.15, 0.2, 0.25],
-            },
-        },
-        "mbsas": {
-            "estimator": create_algorithm_wrapper(mbsas),
-            "param_grid": {
-                "maximum_clusters": [2],
-                "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-            },
-        },
-        "rock": {
-            "estimator": create_algorithm_wrapper(rock),
-            "param_grid": {
-                "number_cluster": [2],
-                "eps": [0.01, 0.05, 0.1, 0.2],
-                "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-            },
-        },
-        "somsc": {
-            "estimator": create_algorithm_wrapper(somsc),
-            "param_grid": {
-                "amount_clusters": [2],
-                "epouch": [100, 300, 500],
-            },
-        },
-        "syncnet": {
-            "estimator": create_algorithm_wrapper(syncnet),
-            "param_grid": {
-                "radius": [0.01, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
-            },
-        },
-        "syncsom": {
-            "estimator": create_algorithm_wrapper(syncsom),
-            "param_grid": {
-                "rows": [5],
-                "cols": [5],
-                "radius": [0.01, 0.05, 0.1, 0.3, 0.5, 1.0],
-            },
-        },
-        "ttsas": {
-            "estimator": create_algorithm_wrapper(ttsas),
-            "param_grid": {
-                "threshold1": [0.01, 0.03, 0.05, 0.075, 0.1],
-                "threshold2": [0.05, 0.075, 0.1, 0.15, 0.2],
-            },
-        },
+    #     "bang": {
+    #         "estimator": create_algorithm_wrapper(bang),
+    #         "param_grid": {
+    #             "levels": [5, 7, 9, 10, 12, 14, 15, 17, 18, 20],
+    #         },
+    #     },
+    #     "bsas": {
+    #         "estimator": create_algorithm_wrapper(bsas),
+    #         "param_grid": {
+    #             "maximum_clusters": [2],
+    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+    #         },
+    #     },
+    #
+    #     # # infinite run
+    #     # "clarans": {
+    #     #     "estimator": create_algorithm_wrapper(clarans),
+    #     #     "param_grid": {
+    #     #         "number_clusters": [2],
+    #     #         "numlocal": [100, 300, 1000],
+    #     #         "maxneighbor": [5, 10, 15, 20],
+    #     #     },
+    #     # },
+    #     "clique": {
+    #         "estimator": create_algorithm_wrapper(clique),
+    #         "param_grid": {
+    #             "amount_intervals": [5, 10, 25, 50],
+    #             "density_threshold": [3, 5, 10, 15],
+    #         },
+    #     },
+    #     "cure": {
+    #         "estimator": create_algorithm_wrapper(cure),
+    #         "param_grid": {
+    #             "number_cluster": [2],
+    #             "number_represent_points": [3, 5, 10, 15],
+    #             "compression": [0.1, 0.25, 0.5, 0.75, 0.9],
+    #         },
+    #     },
+    #
+    #     # # internal error 'hsyncnet' object has no attribute 'get_clusters'
+    #     # "hsyncnet": {
+    #     #     "estimator": create_algorithm_wrapper(hsyncnet),
+    #     #     "param_grid": {
+    #     #         "number_clusters": [2],
+    #     #         "initial_neighbors": [3, 5, 10, 15],
+    #     #         "increase_persent": [0.05, 0.1, 0.15, 0.2, 0.25],
+    #     #     },
+    #     # },
+    #
+    #     "mbsas": {
+    #         "estimator": create_algorithm_wrapper(mbsas),
+    #         "param_grid": {
+    #             "maximum_clusters": [2],
+    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+    #         },
+    #     },
+    #     "rock": {
+    #         "estimator": create_algorithm_wrapper(rock),
+    #         "param_grid": {
+    #             "number_clusters": [2],
+    #             "eps": [0.01, 0.05, 0.1, 0.2],
+    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+    #         },
+    #     },
+    #     "somsc": {
+    #         "estimator": create_algorithm_wrapper(somsc),
+    #         "param_grid": {
+    #             "amount_clusters": [2],
+    #             "epouch": [100, 300, 500],
+    #         },
+    #     },
+    #     # # internal error 'syncnet' object has no attribute 'get_clusters'
+    #     # "syncnet": {
+    #     #     "estimator": create_algorithm_wrapper(syncnet),
+    #     #     "param_grid": {
+    #     #         "radius": [0.01, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
+    #     #     },
+    #     # },
+    #     "syncsom": {
+    #         "estimator": create_algorithm_wrapper(syncsom),
+    #         "param_grid": {
+    #             "rows": [5],
+    #             "cols": [5],
+    #             "radius": [0.01, 0.05, 0.1, 0.3, 0.5, 1.0],
+    #         },
+    #     },
+    #     "ttsas": {
+    #         "estimator": create_algorithm_wrapper(ttsas),
+    #         "param_grid": {
+    #             "threshold1": [0.01, 0.03, 0.05, 0.075, 0.1],
+    #             "threshold2": [0.05, 0.075, 0.1, 0.15, 0.2],
+    #         },
+    #     },
+
+
+
 
     }
 
