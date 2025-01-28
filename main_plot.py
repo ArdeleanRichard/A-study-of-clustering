@@ -34,7 +34,7 @@ def transform_data_np(df, algorithms, datasets, scores, data_names):
 
         # Normalize scores for the dataset independently
         dataset_normalized = dataset_rows.copy()
-        dataset_normalized[f"norm_calinski_harabasz_score"] = np.log1p(dataset_rows["calinski_harabasz_score"])  # Log normalization
+        dataset_normalized[f"norm_calinski_harabasz_score"] = np.log1p(1+dataset_rows["calinski_harabasz_score"])  # Log normalization
         dataset_normalized[f"norm_calinski_harabasz_score"] = dataset_normalized[f"norm_calinski_harabasz_score"] / dataset_normalized[f"norm_calinski_harabasz_score"].max()  # Min-max scaling
 
         # Replace score columns with normalized versions

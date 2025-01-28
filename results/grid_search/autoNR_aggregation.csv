@@ -1,7 +1,0 @@
-nrkmeans_repetitions,outliers,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
-10,True,-1,-1,-1,-1,-1,-1,inf
-10,False,-1,-1,-1,-1,-1,-1,inf
-15,True,-1,-1,-1,-1,-1,-1,inf
-15,False,-1,-1,-1,-1,-1,-1,inf
-20,True,-1,-1,-1,-1,-1,-1,inf
-20,False,-1,-1,-1,-1,-1,-1,inf
