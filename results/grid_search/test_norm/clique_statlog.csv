@@ -1,0 +1,17 @@
+amount_intervals,density_threshold,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+5,3,-1,-1,-1,-1,-1,-1,inf
+5,5,-1,-1,-1,-1,-1,-1,inf
+5,10,-1,-1,-1,-1,-1,-1,inf
+5,15,-1,-1,-1,-1,-1,-1,inf
+10,3,-1,-1,-1,-1,-1,-1,inf
+10,5,-1,-1,-1,-1,-1,-1,inf
+10,10,-1,-1,-1,-1,-1,-1,inf
+10,15,-1,-1,-1,-1,-1,-1,inf
+25,3,-1,-1,-1,-1,-1,-1,inf
+25,5,-1,-1,-1,-1,-1,-1,inf
+25,10,-1,-1,-1,-1,-1,-1,inf
+25,15,-1,-1,-1,-1,-1,-1,inf
+50,3,-1,-1,-1,-1,-1,-1,inf
+50,5,-1,-1,-1,-1,-1,-1,inf
+50,10,-1,-1,-1,-1,-1,-1,inf
+50,15,-1,-1,-1,-1,-1,-1,inf
