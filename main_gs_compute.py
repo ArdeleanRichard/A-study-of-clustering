@@ -15,12 +15,9 @@ from gs_datasets import load_all_data
 
 
 # RUNS REQUIRED:
-# PYCLUSTERING ALGS FROM unbalance-> as rock seems to have blocked
-# RALUCA: dipNSub all HD datasets, needs rerun (out of date csv version)
-# ALL DEEPCLUSTERING on all HD datasets
+# RICI: [RUNNING] PYCLUSTERING only rock algorithm from unbalance-> as it seems to have blocked
 
-# RICI: [RUNNING] MDBSCAN(2024) on data until HD dataset
-
+# CHECK ALL CSV FOR ALGORITHMS WITH LOW PERF ON D1 - might need to rerun
 
 
 def normalize_dbs(df):
