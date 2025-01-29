@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.patches import Rectangle
 import matplotlib
+matplotlib.use('Agg')  # Or use another backend like 'Qt5Agg'
+
+from visualization.algorithm_custom_order import algorithm_order
 
 
 from constants import DIR_RESULTS
@@ -63,11 +66,13 @@ def plot_hierarchical_visualization(title, df, data_names):
     datasets = df["dataset"].unique()
     scores = ["ARI", "AMI", "Pur", "SS", "CHS", "DBS"]
 
+
     # Parameters
     num_algorithms = len(algorithms)
     num_datasets = len(data_names)
     num_scores = len(scores)
 
+    algorithms = algorithm_order # custom order as read from df
     # data (shape: algorithms x datasets x scores)
     data = transform_data_np(df, algorithms, datasets, scores, data_names)
 
