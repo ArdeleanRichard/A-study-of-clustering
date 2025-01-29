@@ -1,0 +1,5 @@
+n_clusters_init,embedding_size,dip_merge_threshold,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+2,10,0.5,-1,-1,-1,-1,-1,-1,inf
+2,20,0.5,-1,-1,-1,-1,-1,-1,inf
+2,30,0.5,-1,-1,-1,-1,-1,-1,inf
+2,40,0.5,-1,-1,-1,-1,-1,-1,inf

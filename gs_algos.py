@@ -213,15 +213,15 @@ def load_algorithms():
         #         "min_cluster_size": [5, 10, 15],
         #     },
         # },
-        "mdbscan": {
-            "estimator": MDBSCAN,
-            "param_grid": {
-                "k": [2,3,4,5,30],
-                "t": [0.01, 0.025, 0.05, 0.1],
-                "eps": [0.01, 0.025, 0.05, 0.1],
-                "min_samples": [3, 5, 10],
-            },
-        },
+        # "mdbscan": {
+        #     "estimator": MDBSCAN,
+        #     "param_grid": {
+        #         "k": [2,3,4,5,30],
+        #         "t": [0.01, 0.025, 0.05, 0.1],
+        #         "eps": [0.01, 0.025, 0.05, 0.1],
+        #         "min_samples": [3, 5, 10],
+        #     },
+        # },
 
         # ### Hierarchical Clustering:
         # "diana": {
@@ -234,7 +234,25 @@ def load_algorithms():
 
 
 
-
+        ### Alternative Clustering:
+        # labels_pred must be 1D: shape is (788, 2)
+        # "autoNR": {
+        #     "estimator": AutoNR,
+        #     "param_grid": {
+        #         "nrkmeans_repetitions": [10, 15, 20],
+        #         "outliers": [True, False],
+        #     },
+        # },
+        # # 'int' object has no attribute 'copy'
+        # "NR-Kmeans": {
+        #     "estimator": NrKmeans,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "outliers": [True, False],
+        #         "max_iter": [200, 300, 400, 500],
+        #         "n_init": [1, 2, 3],
+        #     },
+        # },
 
 
 
@@ -247,20 +265,18 @@ def load_algorithms():
         #    "param_grid": {
         #        "n_clusters": [2],
         #        "input_dim": [1],
-        #        "init": ["random"]
         #    },
         # },
-
+        #
         # "acedec": {
         #     "estimator": ACeDeC,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2],  # for low-dim datasets
+        #         # "embedding_size": [2],  # for low-dim datasets
         #         # "init": ["acedec"],
         #         "init": ["acedec", 'subkmeans', 'random', 'sgd'],
         #         # "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
-        #         # "embedding_size": [20, 30, 40, 50, 60, 70],
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
         #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
         #         "pretrain_epochs": [200],
@@ -275,8 +291,8 @@ def load_algorithms():
         #     "estimator": AEC,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -284,8 +300,8 @@ def load_algorithms():
         #     "estimator": DCN,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -293,8 +309,8 @@ def load_algorithms():
         #     "estimator": DDC,
         #     "param_grid": {
         #         "ratio": [0.01, 0.05, 0.1, 0.2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -302,17 +318,17 @@ def load_algorithms():
         #     "estimator": DEC,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
         # "deepect": {
         #     "estimator": DeepECT,
         #     "param_grid": {
-        #         "max_n_leaf_nodes": [1,2,3,4,5, 10], #, 20, 50, 100],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         "max_n_leaf_nodes": [1,2,3,4,5, 10],
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -321,8 +337,8 @@ def load_algorithms():
         #     "estimator": DipDECK,
         #     "param_grid": {
         #         "n_clusters_init": [2,3,5,10],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         "dip_merge_threshold": [0.5],
         #         # "dip_merge_threshold": [0.1, 0.3, 0.5, 0.7, 0.9],
         #         # "random_state ": [42]
@@ -332,8 +348,8 @@ def load_algorithms():
         #     "estimator": DipEncoder,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -341,8 +357,8 @@ def load_algorithms():
         #     "estimator": DKM,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -350,8 +366,8 @@ def load_algorithms():
         #     "estimator": ENRC,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -359,8 +375,8 @@ def load_algorithms():
         #     "estimator": IDEC,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -368,8 +384,8 @@ def load_algorithms():
         #     "estimator": N2D,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
@@ -377,20 +393,13 @@ def load_algorithms():
         #     "estimator": VaDE,
         #     "param_grid": {
         #         "n_clusters": [2],
-        #         "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         # "embedding_size": [10, 20, 30], # for high-dim datasets
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
         #         # "random_state ": [42]
         #     },
         # },
 
-    #     "autoclustering": {
-    #         "estimator": AutoClustering,
-    #         "param_grid": {
-    #             "n_clusters": [2],
-    #             "input_dim": [1],
-    #             "init": ["random"]
-    #         },
-    #     },
+
 
 
 
@@ -455,14 +464,14 @@ def load_algorithms():
     #         },
     #     },
 
-    #     "rock": { #blocked on unbalance
-    #         "estimator": create_algorithm_wrapper(rock),
-    #         "param_grid": {
-    #             "number_clusters": [2],
-    #             "eps": [0.01, 0.05, 0.1, 0.2],
-    #             "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
-    #         },
-    #     },
+        "rock": { #blocked on unbalance
+            "estimator": create_algorithm_wrapper(rock),
+            "param_grid": {
+                "number_clusters": [2],
+                "eps": [0.01, 0.05, 0.1, 0.2],
+                "threshold": [0.01, 0.05, 0.1, 0.2, 0.4, 0.7],
+            },
+        },
     #     "somsc": {
     #         "estimator": create_algorithm_wrapper(somsc),
     #         "param_grid": {

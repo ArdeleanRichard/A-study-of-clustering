@@ -1,0 +1,11 @@
+levels,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+5,-1,-1,-1,-1,-1,-1,inf
+7,-1,-1,-1,-1,-1,-1,inf
+9,-1,-1,-1,-1,-1,-1,inf
+10,-1,-1,-1,-1,-1,-1,inf
+12,-1,-1,-1,-1,-1,-1,inf
+14,-1,-1,-1,-1,-1,-1,inf
+15,-1,-1,-1,-1,-1,-1,inf
+17,-1,-1,-1,-1,-1,-1,inf
+18,-1,-1,-1,-1,-1,-1,inf
+20,-1,-1,-1,-1,-1,-1,inf
