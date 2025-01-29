@@ -29,21 +29,21 @@ from clustering_algos.autoclustering_pytorch import AutoClustering
 
 def load_algorithms():
     algorithms = {
-    #     "kmeans": {
-    #         "estimator": KMeans,
-    #         "param_grid": {
-    #             "n_clusters": [2, 3, 4, 5],
-    #             "init": ["k-means++", "random"],
-    #             "max_iter": [300, 500, 1000],
-    #         },
-    #     },
-    #     "dbscan": {
-    #         "estimator": DBSCAN,
-    #         "param_grid": {
-    #             "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-    #             "min_samples": [1, 3, 5, 10, 15],
-    #         },
-    #     },
+        # "kmeans": {
+        #     "estimator": KMeans,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "init": ["k-means++", "random"],
+        #         "max_iter": [300, 500, 1000],
+        #     },
+        # },
+        "dbscan": {
+            "estimator": DBSCAN,
+            "param_grid": {
+                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+                "min_samples": [1, 3, 5, 10, 15],
+            },
+        },
     #     "agglomerative": {
     #         "estimator": AgglomerativeClustering,
     #         "param_grid": {
