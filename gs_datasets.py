@@ -1,3 +1,5 @@
+import numpy as np
+
 from data_read.data_arff import create_2d4c, create_2d10c, create_2d20c, create_3spiral, create_aggregation, create_compound, create_elly_2d10c13s, create_s1, create_s2
 from data_read.data_csv import create_unbalance
 from data_read.data_sklearn import create_data1, create_data2, create_data3, create_data4, create_data5
@@ -7,21 +9,21 @@ from data_read.data_uci import create_ecoli, create_glass, create_wdbc, create_w
 def load_all_data():
     n_samples = 1000
     datasets = [
-        # ("D1", create_data1(n_samples)),
-        # ("D2", create_data2(n_samples)),
-        # ("D3", create_data3(n_samples)),
-        # ("D4", create_data4(n_samples)),
-        # ("D5", create_data5(n_samples)),
-        # ("unbalance", create_unbalance()),
-        # ("2d4c",create_2d4c()  ),
-        # ("2d10c",create_2d10c()  ),
-        # ("2d20c",create_2d20c()  ),
-        # ("3spiral",create_3spiral()  ),
-        # ("aggregation",create_aggregation()  ),
-        # ("compound",create_compound()  ),
-        # ("elly2d10c13s",create_elly_2d10c13s()  ),
-        # ("s1",create_s1()  ),
-        # ("s2",create_s2()),
+        ("D1", create_data1(n_samples)),
+        ("D2", create_data2(n_samples)),
+        ("D3", create_data3(n_samples)),
+        ("D4", create_data4(n_samples)),
+        ("D5", create_data5(n_samples)),
+        ("unbalance", create_unbalance()),
+        ("2d4c",create_2d4c()  ),
+        ("2d10c",create_2d10c()  ),
+        ("2d20c",create_2d20c()  ),
+        ("3spiral",create_3spiral()  ),
+        ("aggregation",create_aggregation()  ),
+        ("compound",create_compound()  ),
+        ("elly2d10c13s",create_elly_2d10c13s()  ),
+        ("s1",create_s1()  ),
+        ("s2",create_s2()),
         ("ecoli", create_ecoli()),
         ("glass", create_glass()),
         ("yeast", create_yeast()),
@@ -154,3 +156,10 @@ def load_data_hd():
 #     ]
 #
 #     return datasets
+
+
+if __name__ == "__main__":
+    dataset = load_all_data()
+    for name, (X, y) in dataset:
+        data = np.hstack((X, y.reshape(-1, 1)))
+        np.savetxt(f"./data/{name}.csv", data, delimiter=",")

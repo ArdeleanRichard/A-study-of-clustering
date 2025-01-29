@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from ucimlrepo import fetch_ucirepo
 
@@ -8,41 +9,58 @@ def read_uci(fetched_data):
 
     label_encoder = LabelEncoder()
     y = label_encoder.fit_transform(y)
+
     return X, y
 
+def try_repo_or_load_from_file(id, name):
+    try:
+        fetched_data = fetch_ucirepo(id=id)
+        X, y = read_uci(fetched_data)
+    except ConnectionError:
+        data = np.genfromtxt(f"./data/{name}.csv", delimiter=',')
+        X = data[:, :-1]
+        y = data[:, -1]
+
+    return X,y
+
 def create_ecoli():
-    fetched_data = fetch_ucirepo(id=39)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=39, name="ecoli")
+
+    return X, y
 
 def create_glass():
-    fetched_data = fetch_ucirepo(id=42)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=42, name="glass")
+
+    return X, y
 
 def create_statlog():
-    fetched_data = fetch_ucirepo(id=147)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=147, name="statlog")
+
+    return X, y
 
 
 def create_yeast():
-    fetched_data = fetch_ucirepo(id=110)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=110, name="yeast")
 
-def create_statlog():
-    fetched_data = fetch_ucirepo(id=147)
-    return read_uci(fetched_data)
+    return X, y
+
 
 def create_wdbc():
-    fetched_data = fetch_ucirepo(id=17)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=17, name="wdbc")
+
+    return X, y
 
 def create_wine():
-    fetched_data = fetch_ucirepo(id=109)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=109, name="wine")
+
+    return X, y
 
 def create_sonar():
-    fetched_data = fetch_ucirepo(id=151)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=151, name="sonar")
+
+    return X, y
 
 def create_ionosphere():
-    fetched_data = fetch_ucirepo(id=52)
-    return read_uci(fetched_data)
+    X, y = try_repo_or_load_from_file(id=52, name="sonar")
+
+    return X, y
