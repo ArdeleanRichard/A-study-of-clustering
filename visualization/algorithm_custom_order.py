@@ -26,7 +26,7 @@ algorithm_order = [
     "agglomerative",
     "birch",
     "cure",
-    #"rock",
+    "rock",
     "diana",
     
     # Grid-Based Clustering Algorithms
@@ -52,7 +52,7 @@ algorithm_order = [
     # Constraint-Based Clustering Algorithms
     # These algorithms incorporate external constraints into the clustering process, such as must-link or cannot-link constraints.
     "dipInit",
-    #"dipNSub",
+    "dipNSub",
     "skinnydip",
     "projectedDipMeans",
     "syncsom",
@@ -71,7 +71,7 @@ algorithm_order = [
     "dipdeck",
     "dipencoder",
     "dkm",
-    "enrc",
+    #"enrc", ## no results on any datasets with any parameters
     "idec",
     "n2d",
     "vade",
