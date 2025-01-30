@@ -15,18 +15,20 @@ from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 
 
 # RUNS REQUIRED:
-# RICI: [RUNNING] PYCLUSTERING only rock algorithm from unbalance-> as it seems to have blocked
 
 # CHECK ALL CSV FOR ALGORITHMS WITH LOW PERF ON D1 - might need to rerun
-# - ENRC seems to not run on anything
 # - Might require parameter reruns:
-# -- affinity
-# -- clique
-# -- cure
-# -- dipInit
+# -- acedec *
+# -- aec *
+#
+# -- affinity ?
+# -- clique ?
+# -- dipInit [RUNNING]
 # -- skinnydip
 # -- syncsom
 # -- ttsas
+
+
 
 def normalize_dbs(df):
     # df['davies_bouldin_score'] = 1 - df['davies_bouldin_score'] / df['davies_bouldin_score'].max() # doesnt work as well as I would like
