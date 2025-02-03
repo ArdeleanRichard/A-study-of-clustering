@@ -110,9 +110,9 @@ def load_algorithms():
             "param_grid": {
                 "n_clusters": [2, 3, 4, 5],
                 "step_size": [0.1, 0.01, 0.001],
-                "dip_threshold": [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1],
+                "dip_threshold": [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1], # dip_threshold=1 long run
                 "n_starting_vectors": [1, 2, 3, 5],
-                "ambiguous_triangle_strategy": ['ignore', 'random', 'all'],
+                "ambiguous_triangle_strategy": ['ignore', 'random', 'all'], # 'all' long run
             },
         },
     #

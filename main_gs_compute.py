@@ -76,6 +76,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
 
             for params in param_combinations:
                 param_dict = dict(zip(param_names, params))
+                print(param_dict)
                 # is_nondeterministic = any(
                 #     key in param_dict for key in ["init", "random_state"]
                 # )
@@ -120,6 +121,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
                             "calinski_harabasz_score": -1,
                             "davies_bouldin_score": -1,
                         })
+                    print()
 
                 # Aggregate scores across repeats for nondeterministic algorithms
                 if is_nondeterministic:
