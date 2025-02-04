@@ -37,13 +37,13 @@ def load_algorithms():
         #         "max_iter": [300, 500, 1000],
         #     },
         # },
-        # "dbscan": {
-        #     "estimator": DBSCAN,
-        #     "param_grid": {
-        #         "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-        #         "min_samples": [1, 3, 5, 10, 15],
-        #     },
-        # },
+        "dbscan": {
+            "estimator": DBSCAN,
+            "param_grid": {
+                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+                "min_samples": [1, 3, 5, 10, 15],
+            },
+        },
     #     "agglomerative": {
     #         "estimator": AgglomerativeClustering,
     #         "param_grid": {
@@ -95,9 +95,10 @@ def load_algorithms():
     #     "affinity": {
     #         "estimator": AffinityPropagation,
     #         "param_grid": {
-    #             "damping": [0.5, 0.7, 0.9],
-    #             "affinity": ['precomputed', "euclidean"],
-    #             "preference": [None, -50, -100, -150, -200, -220, -240],
+    #             "damping": [0.5, 0.6, 0.7, 0.8, 0.9, 0.99],
+    #             "convergence_iter": [15, 50],
+    #             "affinity": ["euclidean"], # 'precomputed', - no results
+    #             "preference": [None, -10, -50, -100, -150, -200, -220, -240],
     #         }
     #     },
     #
@@ -105,23 +106,37 @@ def load_algorithms():
     #
     #
     #
-    #     "dipInit": {
-    #         "estimator": DipInit,
-    #         "param_grid": {
-    #             "n_clusters": [2, 3, 4, 5],
-    #             "dip_threshold": [0.1, 0.25, 0.5, 0.75, 1],
-    #         },
-    #     },
+        # "dipInit": {
+        #     "estimator": DipInit,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "step_size": [0.1, 0.01, 0.001],
+        #         "dip_threshold": [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1], # dip_threshold=1 long run
+        #         "n_starting_vectors": [1, 2, 3, 5],
+        #         "ambiguous_triangle_strategy": ['ignore', 'random', 'all'], # 'all' long run
+        #     },
+        # },
     #
-        "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
-            "estimator": DipNSub,
-            "param_grid": {
-                "outliers": [True, False],
-                "consider_duplicates": [True, False],
-                "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
-                "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1],
-            },
-        },
+        # "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 0.99/1
+        #     "estimator": DipNSub,
+        #     "param_grid": {
+        #         "outliers": [True, False],
+        #         "step_size": [0.1, 0.01], #, 0.001],
+        #         "n_starting_vectors": [1, 2], #, 3, 5],
+        #         "consider_duplicates": [True, False],
+        #         "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1],
+        #         "significance": [0.01, 0.02, 0.05, 0.1, 0.2], #, 0.4, 0.7, 0.9, 0.95, 0.99, 1.0],
+        #     },
+        # },
+        # "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
+        #     "estimator": DipNSub,
+        #     "param_grid": {
+        #         "outliers": [True, False],
+        #         "consider_duplicates": [True, False],
+        #         "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
+        #         "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1],
+        #     },
+        # },
     #
     #     "dipMeans": {
     #             "estimator": DipMeans,
@@ -134,6 +149,8 @@ def load_algorithms():
     #     "gapStatistic": {
     #         "estimator": GapStatistic,
     #         "param_grid": {
+    #             "min_n_clusters": [2],
+    #             "max_n_clusters": [2],
     #             "n_boots": [5, 10, 15, 20, 30],
     #             "use_principal_components": [True, False],
     #             "use_log": [True, False],
@@ -143,8 +160,9 @@ def load_algorithms():
     #     "gmeans": {
     #         "estimator": GMeans,
     #         "param_grid": {
-    #             "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
+    #             "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5],
     #             "n_clusters_init": [2],
+    #             "max_n_clusters": [2],
     #             "n_split_trials": [1, 2, 5, 10, 20],
     #         },
     #     },
@@ -249,34 +267,34 @@ def load_algorithms():
     #        },
     #     },
     #
-    #     "acedec": {
-    #         "estimator": ACeDeC,
-    #         "param_grid": {
-    #             "n_clusters": [2],
-    #             # "embedding_size": [2],  # for low-dim datasets
-    #             # "init": ["acedec"],
-    #             "init": ["acedec", 'subkmeans', 'random', 'sgd'],
-    #             # "embedding_size": [2, 5, 10], # for low-dim datasets
-    #             "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-    #             # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-    #             # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-    #             "pretrain_epochs": [200],
-    #             "clustering_epochs": [200],
-    #             # "batch_size": [32, 64, 128],
-    #
-    #             # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-    #             # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-    #         },
-    #     },
-    #     "aec": {
-    #         "estimator": AEC,
-    #         "param_grid": {
-    #             "n_clusters": [2],
-    #             # "embedding_size": [2, 5, 10], # for low-dim datasets
-    #             "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-    #             # "random_state ": [42]
-    #         },
-    #     },
+        # "acedec": {
+        #     "estimator": ACeDeC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         # "embedding_size": [2],  # for low-dim datasets
+        #         # "init": ["acedec"],
+        #         "init": ["acedec", 'subkmeans', 'random', 'sgd'],
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
+        #         "pretrain_epochs": [200],
+        #         "clustering_epochs": [200],
+        #         # "batch_size": [32, 64, 128],
+        #
+        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
+        #     },
+        # },
+        # "aec": {
+        #     "estimator": AEC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+        #         # "random_state ": [42]
+        #     },
+        # },
     #     "dcn": {
     #         "estimator": DCN,
     #         "param_grid": {
@@ -343,15 +361,15 @@ def load_algorithms():
     #             # "random_state ": [42]
     #         },
     #     },
-    #     "enrc": {
-    #         "estimator": ENRC,
-    #         "param_grid": {
-    #             "n_clusters": [2],
-    #             # "embedding_size": [2, 5, 10], # for low-dim datasets
-    #             "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-    #             # "random_state ": [42]
-    #         },
-    #     },
+    #     # "enrc": { # no results on any datasets with any parameters
+    #     #     "estimator": ENRC,
+    #     #     "param_grid": {
+    #     #         "n_clusters": [2],
+    #     #         # "embedding_size": [2, 5, 10], # for low-dim datasets
+    #     #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+    #     #         # "random_state ": [42]
+    #     #     },
+    #     # },
     #     "idec": {
     #         "estimator": IDEC,
     #         "param_grid": {
@@ -422,8 +440,8 @@ def load_algorithms():
     #         "estimator": create_algorithm_wrapper(cure),
     #         "param_grid": {
     #             "number_cluster": [2],
-    #             "number_represent_points": [3, 5, 10, 15],
-    #             "compression": [0.1, 0.25, 0.5, 0.75, 0.9],
+    #             "number_represent_points": [1, 3, 5, 10, 15],
+    #             "compression": [0.01, 0.02, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9],
     #         },
     #     },
     #

@@ -13,19 +13,22 @@ from gs_algos import load_algorithms
 from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 
 
+
 # RUNS REQUIRED:
 # RICI: [RUNNING] PYCLUSTERING only rock algorithm from unbalance-> as it seems to have blocked
 
 # CHECK ALL CSV FOR ALGORITHMS WITH LOW PERF ON D1 - might need to rerun
-# - ENRC seems to not run on anything
 # - Might require parameter reruns:
-# -- affinity
-# -- clique
-# -- cure
-# -- dipInit
+# -- acedec *
+# -- aec *
+#
+# -- affinity ?
+# -- clique ?
 # -- skinnydip
 # -- syncsom
 # -- ttsas
+
+
 
 def normalize_dbs(df):
     # df['davies_bouldin_score'] = 1 - df['davies_bouldin_score'] / df['davies_bouldin_score'].max() # doesnt work as well as I would like
@@ -47,7 +50,6 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
         # scale all datasets to the same range
         scaler = preprocessing.MinMaxScaler().fit(X)
         X = scaler.transform(X)
-        X = np.clip(X, 0, 1) # error, range given is [0.0, 1.0000000000000002] from floating point precision
 
         for algo_name, algo_details in algorithms.items():
             results = []
@@ -57,11 +59,18 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
             # SPECIAL PARAMS
             # -------------
             for param_name in param_names:
-                if param_name == "n_clusters" or param_name == "number_clusters" or param_name == "n_clusters_init" or param_name == "amount_clusters":
+                if (param_name == "n_clusters" or
+                    param_name == "number_cluster" or
+                    param_name == "number_clusters" or
+                    param_name == "n_clusters_init" or
+                    param_name == "amount_clusters"
+                ):
                     algo_details["param_grid"][param_name] = [len(np.unique(y_true))]
                 if param_name == "input_dim":
                     algo_details["param_grid"][param_name] = [X.shape[1]]
-                if param_name == "maximum_clusters":
+                if param_name == "min_n_clusters":
+                    algo_details["param_grid"][param_name] = [len(np.unique(y_true))-1]
+                if param_name == "maximum_clusters" or param_name == "max_n_clusters":
                     algo_details["param_grid"][param_name] = [len(np.unique(y_true))+1]
                 if param_name == "bandwidth":
                     bandwidth = estimate_bandwidth(X, quantile=0.1, n_samples=50)
@@ -138,11 +147,9 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
             # Save results to CSV
             results_df = pd.DataFrame(results)
             results_df = normalize_dbs(results_df)
-            results_df.to_csv(DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv", index=False)
-            # path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
-            #     else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
-            # results_df.to_csv(path, index=False)
-
+            path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
+                else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
+            results_df.to_csv(path, index=False)
 
 
 def grid_search_across_all_data():

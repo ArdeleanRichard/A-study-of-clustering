@@ -1,0 +1,2 @@
+n_clusters,input_dim,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+2,2,-0.0008859818979472827,-0.0006533784239138963,0.505,0.3518661998352693,583.0792971502892,1.1601538583016064,0.46292998813808445
