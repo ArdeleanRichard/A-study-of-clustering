@@ -23,7 +23,6 @@ from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 #
 # -- affinity ?
 # -- clique ?
-# -- dipInit [RUNNING]
 # -- skinnydip
 # -- syncsom
 # -- ttsas
@@ -59,11 +58,18 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
             # SPECIAL PARAMS
             # -------------
             for param_name in param_names:
-                if param_name == "n_clusters" or param_name == "number_cluster" or param_name == "number_clusters" or param_name == "n_clusters_init" or param_name == "amount_clusters":
+                if (param_name == "n_clusters" or
+                    param_name == "number_cluster" or
+                    param_name == "number_clusters" or
+                    param_name == "n_clusters_init" or
+                    param_name == "amount_clusters"
+                ):
                     algo_details["param_grid"][param_name] = [len(np.unique(y_true))]
                 if param_name == "input_dim":
                     algo_details["param_grid"][param_name] = [X.shape[1]]
-                if param_name == "maximum_clusters":
+                if param_name == "min_n_clusters":
+                    algo_details["param_grid"][param_name] = [len(np.unique(y_true))-1]
+                if param_name == "maximum_clusters" or param_name == "max_n_clusters":
                     algo_details["param_grid"][param_name] = [len(np.unique(y_true))+1]
                 if param_name == "bandwidth":
                     bandwidth = estimate_bandwidth(X, quantile=0.1, n_samples=50)

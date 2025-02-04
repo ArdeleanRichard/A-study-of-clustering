@@ -92,38 +92,40 @@ def load_algorithms():
     #             "leaf_size": [25, 40, 70, 100]
     #         },
     #     },
-    #     "affinity": {
-    #         "estimator": AffinityPropagation,
-    #         "param_grid": {
-    #             "damping": [0.5, 0.7, 0.9],
-    #             "affinity": ['precomputed', "euclidean"],
-    #             "preference": [None, -50, -100, -150, -200, -220, -240],
-    #         }
-    #     },
-    #
-    #
-    #
-    #
-    #
-        "dipInit": {
-            "estimator": DipInit,
+        "affinity": {
+            "estimator": AffinityPropagation,
             "param_grid": {
-                "n_clusters": [2, 3, 4, 5],
-                "step_size": [0.1, 0.01, 0.001],
-                "dip_threshold": [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1], # dip_threshold=1 long run
-                "n_starting_vectors": [1, 2, 3, 5],
-                "ambiguous_triangle_strategy": ['ignore', 'random', 'all'], # 'all' long run
-            },
+                "damping": [0.5, 0.6, 0.7, 0.8, 0.9, 0.99],
+                "convergence_iter": [15, 50],
+                "affinity": ["euclidean"], # 'precomputed', - no results
+                "preference": [None, -10, -50, -100, -150, -200, -220, -240],
+            }
         },
+    #
+    #
+    #
+    #
+    #
+        # "dipInit": {
+        #     "estimator": DipInit,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "step_size": [0.1, 0.01, 0.001],
+        #         "dip_threshold": [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1], # dip_threshold=1 long run
+        #         "n_starting_vectors": [1, 2, 3, 5],
+        #         "ambiguous_triangle_strategy": ['ignore', 'random', 'all'], # 'all' long run
+        #     },
+        # },
     #
         # "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 0.99/1
         #     "estimator": DipNSub,
         #     "param_grid": {
         #         "outliers": [True, False],
-        #         "step_size": [0.1, 0.01, 0.001],
+        #         "step_size": [0.1, 0.01], #, 0.001],
+        #         "n_starting_vectors": [1, 2], #, 3, 5],
         #         "consider_duplicates": [True, False],
-        #         "threshold": [0.1, 0.15, 0.2, 0.5],
-        #         "significance": [0.05, 0.1, 0.2, 0.4, 0.7, 0.9, 0.95, 0.99, 1.0],
+        #         "threshold": [0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1],
+        #         "significance": [0.05, 0.1, 0.2], #, 0.4, 0.7, 0.9, 0.95, 0.99, 1.0],
         #     },
         # },
     #
@@ -138,6 +140,8 @@ def load_algorithms():
     #     "gapStatistic": {
     #         "estimator": GapStatistic,
     #         "param_grid": {
+    #             "min_n_clusters": [2],
+    #             "max_n_clusters": [2],
     #             "n_boots": [5, 10, 15, 20, 30],
     #             "use_principal_components": [True, False],
     #             "use_log": [True, False],
@@ -147,8 +151,9 @@ def load_algorithms():
     #     "gmeans": {
     #         "estimator": GMeans,
     #         "param_grid": {
-    #             "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
+    #             "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5],
     #             "n_clusters_init": [2],
+    #             "max_n_clusters": [2],
     #             "n_split_trials": [1, 2, 5, 10, 20],
     #         },
     #     },
