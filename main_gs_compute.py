@@ -13,7 +13,6 @@ from gs_algos import load_algorithms
 from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 
 
-
 # RUNS REQUIRED:
 # RICI: [RUNNING] PYCLUSTERING only rock algorithm from unbalance-> as it seems to have blocked
 
@@ -48,6 +47,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
         # scale all datasets to the same range
         scaler = preprocessing.MinMaxScaler().fit(X)
         X = scaler.transform(X)
+        X = np.clip(X, 0, 1) # error, range given is [0.0, 1.0000000000000002] from floating point precision
 
         for algo_name, algo_details in algorithms.items():
             results = []
@@ -84,6 +84,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
                 for _ in range(n_repeats if is_nondeterministic else 1):
                     try:
                         estimator = algo_details["estimator"](**param_dict)
+                        print(param_dict)
                         y_pred = estimator.fit_predict(X)
 
                         if len(np.unique(y_pred)) > 1:  # Ensure more than one cluster
@@ -118,6 +119,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
                             "calinski_harabasz_score": -1,
                             "davies_bouldin_score": -1,
                         })
+                    print()
 
                 # Aggregate scores across repeats for nondeterministic algorithms
                 if is_nondeterministic:
@@ -136,12 +138,25 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
             # Save results to CSV
             results_df = pd.DataFrame(results)
             results_df = normalize_dbs(results_df)
-            path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
-                else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
-            results_df.to_csv(path, index=False)
+            results_df.to_csv(DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv", index=False)
+            # path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
+            #     else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
+            # results_df.to_csv(path, index=False)
 
 
-if __name__ == "__main__":
+
+def grid_search_across_all_data():
+    datasets = load_all_data()
+    algorithms = load_algorithms()
+    perform_grid_search(datasets, algorithms, 10)
+
+
+def multi_dimensional_analysis():
     datasets = load_sklearn_data_3_multiple_dimensions()
     algorithms = load_algorithms()
     perform_grid_search(datasets, algorithms, 10, True)
+
+
+if __name__ == "__main__":
+    grid_search_across_all_data()
+    # multi_dimensional_analysis()

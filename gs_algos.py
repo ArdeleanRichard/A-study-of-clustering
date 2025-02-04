@@ -37,13 +37,13 @@ def load_algorithms():
         #         "max_iter": [300, 500, 1000],
         #     },
         # },
-        "dbscan": {
-            "estimator": DBSCAN,
-            "param_grid": {
-                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-                "min_samples": [1, 3, 5, 10, 15],
-            },
-        },
+        # "dbscan": {
+        #     "estimator": DBSCAN,
+        #     "param_grid": {
+        #         "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+        #         "min_samples": [1, 3, 5, 10, 15],
+        #     },
+        # },
     #     "agglomerative": {
     #         "estimator": AgglomerativeClustering,
     #         "param_grid": {
@@ -113,15 +113,15 @@ def load_algorithms():
     #         },
     #     },
     #
-    #     "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
-    #         "estimator": DipNSub,
-    #         "param_grid": {
-    #             "outliers": [True, False],
-    #             "consider_duplicates": [True, False],
-    #             "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
-    #             "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1],
-    #         },
-    #     },
+        "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
+            "estimator": DipNSub,
+            "param_grid": {
+                "outliers": [True, False],
+                "consider_duplicates": [True, False],
+                "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
+                "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1],
+            },
+        },
     #
     #     "dipMeans": {
     #             "estimator": DipMeans,
