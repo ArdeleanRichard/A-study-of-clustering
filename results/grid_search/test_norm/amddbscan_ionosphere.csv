@@ -1,0 +1,2 @@
+adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+-0.0020440149364766382,0.032603869846519896,0.5384615384615384,0.1894425650261715,9.773028373094023,1.6957051598733184,0.37096045030644

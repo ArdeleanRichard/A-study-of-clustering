@@ -21,6 +21,7 @@ from clustpy.partition import DipInit, DipMeans, DipNSub, GapStatistic, Projecte
 from clustpy.partition.subkmeans import SubKmeans
 from clustpy.alternative import AutoNR, NrKmeans
 
+from clustering_algos.AMDDBSCAN import AMDDBSCAN
 from clustering_algos.Algorithms import create_algorithm_wrapper
 from clustering_algos.DRLDBSCAN.main import DrlDbscanAlgorithm
 from clustering_algos.MDBSCAN import MDBSCAN
@@ -37,13 +38,13 @@ def load_algorithms():
         #         "max_iter": [300, 500, 1000],
         #     },
         # },
-        "dbscan": {
-            "estimator": DBSCAN,
-            "param_grid": {
-                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-                "min_samples": [1, 3, 5, 10, 15],
-            },
-        },
+        # "dbscan": {
+        #     "estimator": DBSCAN,
+        #     "param_grid": {
+        #         "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+        #         "min_samples": [1, 3, 5, 10, 15],
+        #     },
+        # },
     #     "agglomerative": {
     #         "estimator": AgglomerativeClustering,
     #         "param_grid": {
@@ -240,6 +241,11 @@ def load_algorithms():
     #             "min_samples": [3, 5, 10],
     #         },
     #     },
+    #     "amddbscan": {
+    #         "estimator": AMDDBSCAN,
+    #         "param_grid": {
+    #         },
+    #     },
     #
     #     # ### Hierarchical Clustering:
     #     "diana": {
@@ -432,8 +438,8 @@ def load_algorithms():
     #     "clique": {
     #         "estimator": create_algorithm_wrapper(clique),
     #         "param_grid": {
-    #             "amount_intervals": [5, 10, 25, 50],
-    #             "density_threshold": [3, 5, 10, 15],
+    #             "amount_intervals": [5, 7, 10, 12, 20, 25, 35, 50],
+    #             "density_threshold": [1, 3, 4, 5, 7, 10, 15],
     #         },
     #     },
     #     "cure": {
@@ -485,19 +491,19 @@ def load_algorithms():
     #     #         "radius": [0.01, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
     #     #     },
     #     # },
-    #     "syncsom": {
-    #         "estimator": create_algorithm_wrapper(syncsom),
-    #         "param_grid": {
-    #             "rows": [5],
-    #             "cols": [5],
-    #             "radius": [0.01, 0.05, 0.1, 0.3, 0.5, 1.0],
-    #         },
-    #     },
+        "syncsom": {
+            "estimator": create_algorithm_wrapper(syncsom),
+            "param_grid": {
+                "rows": [5, 10],
+                "cols": [5, 10],
+                "radius": [0.001, 0.005, 0.01, 0.03, 0.05, 0.07, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0],
+            },
+        },
     #     "ttsas": {
     #         "estimator": create_algorithm_wrapper(ttsas),
     #         "param_grid": {
-    #             "threshold1": [0.01, 0.03, 0.05, 0.075, 0.1],
-    #             "threshold2": [0.05, 0.075, 0.1, 0.15, 0.2],
+    #             "threshold1": [0.001, 0.005, 0.01, 0.02, 0.03, 0.05, 0.075, 0.1, 0.2, 0.3, 0.5, 0.75, 1],
+    #             "threshold2": [0.001, 0.005, 0.01, 0.05, 0.075, 0.1, 0.15, 0.2, 0.3, 0.5, 0.75, 1],
     #         },
     #     },
 

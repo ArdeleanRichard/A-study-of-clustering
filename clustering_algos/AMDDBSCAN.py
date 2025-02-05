@@ -5,7 +5,7 @@ from sklearn import preprocessing
 from sklearn.cluster import DBSCAN, KMeans
 
 from data_read.data_arff import create_compound
-from data_read.data_sklearn import create_data1
+from data_read.data_sklearn import create_data1, create_data2, create_data5
 import visualization.scatter_plot as sp
 
 
@@ -161,9 +161,15 @@ class AMDDBSCAN:
         cluster_id = 0
 
 
-
         for eps in eps_list:
-            min_pts_list = self.obtain_min_pts_list(data, [eps])
+            try:
+                min_pts_list = self.obtain_min_pts_list(data, [eps])
+            except ValueError:
+                break
+
+            if min_pts_list[0] == 0:
+                break
+
             dbscan = DBSCAN(eps=eps, min_samples=int(min_pts_list[0])).fit(data)
             new_labels = dbscan.labels_
 
@@ -184,7 +190,10 @@ if __name__ == "__main__":
     import os
     os.chdir("../")
     n_samples = 1000
-    X, y = create_compound()
+    # X, y = create_data1(n_samples)
+    # X, y = create_data2(n_samples)
+    X, y = create_data5(n_samples)
+    # X, y = create_compound()
     scaler = preprocessing.MinMaxScaler().fit(X)
     X = scaler.transform(X)
 
