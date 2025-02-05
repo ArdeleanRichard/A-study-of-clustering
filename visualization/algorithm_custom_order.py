@@ -17,6 +17,7 @@ algorithm_order = [
     "optics",
     "mddbscan",
     "mdbscan",
+    "amddbscan",
 
     "hdbscan",
 

@@ -15,18 +15,14 @@ from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 
 
 # RUNS REQUIRED:
-# RICI: [RUNNING] PYCLUSTERING only rock algorithm from unbalance-> as it seems to have blocked
 
 # CHECK ALL CSV FOR ALGORITHMS WITH LOW PERF ON D1 - might need to rerun
 # - Might require parameter reruns:
 # -- acedec *
 # -- aec *
 #
-# -- affinity ?
 # -- clique ?
 # -- skinnydip
-# -- syncsom
-# -- ttsas
 
 
 
