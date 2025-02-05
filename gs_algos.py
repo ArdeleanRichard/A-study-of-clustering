@@ -37,13 +37,13 @@ def load_algorithms():
         #         "max_iter": [300, 500, 1000],
         #     },
         # },
-        "dbscan": {
-            "estimator": DBSCAN,
-            "param_grid": {
-                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-                "min_samples": [1, 3, 5, 10, 15],
-            },
-        },
+        # "dbscan": {
+        #     "estimator": DBSCAN,
+        #     "param_grid": {
+        #         "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+        #         "min_samples": [1, 3, 5, 10, 15],
+        #     },
+        # },
     #     "agglomerative": {
     #         "estimator": AgglomerativeClustering,
     #         "param_grid": {
@@ -267,34 +267,35 @@ def load_algorithms():
     #        },
     #     },
     #
-        # "acedec": {
-        #     "estimator": ACeDeC,
-        #     "param_grid": {
-        #         "n_clusters": [2],
-        #         # "embedding_size": [2],  # for low-dim datasets
-        #         # "init": ["acedec"],
-        #         "init": ["acedec", 'subkmeans', 'random', 'sgd'],
-        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-        #         "pretrain_epochs": [200],
-        #         "clustering_epochs": [200],
-        #         # "batch_size": [32, 64, 128],
-        #
-        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-        #     },
-        # },
-        # "aec": {
-        #     "estimator": AEC,
-        #     "param_grid": {
-        #         "n_clusters": [2],
-        #         # "embedding_size": [2, 5, 10], # for low-dim datasets
-        #         "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-        #         # "random_state ": [42]
-        #     },
-        # },
+        "acedec": {
+            "estimator": ACeDeC,
+            "param_grid": {
+                "n_clusters": [2],
+                # "embedding_size": [2],  # for low-dim datasets
+                "init": ["acedec"],
+                # "init": ["acedec", 'subkmeans', 'random', 'sgd'],
+                "embedding_size": [2, 5, 10], # for low-dim datasets
+                # "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+                # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+                "pretrain_epochs": [100, 200],
+                "clustering_epochs": [100, 200],
+                # "batch_size": [32, 64, 128],
+
+                # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+                # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
+            },
+        },
+        "aec": {
+            "estimator": AEC,
+            "param_grid": {
+                "n_clusters": [2],
+                "embedding_size": [2, 5, 10], # for low-dim datasets
+                # "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+                "pretrain_epochs": [100, 200],
+                "clustering_epochs": [100, 200],
+                # "random_state ": [42]
+            },
+        },
     #     "dcn": {
     #         "estimator": DCN,
     #         "param_grid": {
