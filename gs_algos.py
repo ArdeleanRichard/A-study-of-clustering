@@ -29,21 +29,21 @@ from clustering_algos.autoclustering_pytorch import AutoClustering
 
 def load_algorithms():
     algorithms = {
-    #     "kmeans": {
-    #         "estimator": KMeans,
-    #         "param_grid": {
-    #             "n_clusters": [2, 3, 4, 5],
-    #             "init": ["k-means++", "random"],
-    #             "max_iter": [300, 500, 1000],
-    #         },
-    #     },
-    #     "dbscan": {
-    #         "estimator": DBSCAN,
-    #         "param_grid": {
-    #             "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
-    #             "min_samples": [1, 3, 5, 10, 15],
-    #         },
-    #     },
+        # "kmeans": {
+        #     "estimator": KMeans,
+        #     "param_grid": {
+        #         "n_clusters": [2, 3, 4, 5],
+        #         "init": ["k-means++", "random"],
+        #         "max_iter": [300, 500, 1000],
+        #     },
+        # },
+        "dbscan": {
+            "estimator": DBSCAN,
+            "param_grid": {
+                "eps": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4],
+                "min_samples": [1, 3, 5, 10, 15],
+            },
+        },
     #     "agglomerative": {
     #         "estimator": AgglomerativeClustering,
     #         "param_grid": {
@@ -92,15 +92,15 @@ def load_algorithms():
     #             "leaf_size": [25, 40, 70, 100]
     #         },
     #     },
-        "affinity": {
-            "estimator": AffinityPropagation,
-            "param_grid": {
-                "damping": [0.5, 0.6, 0.7, 0.8, 0.9, 0.99],
-                "convergence_iter": [15, 50],
-                "affinity": ["euclidean"], # 'precomputed', - no results
-                "preference": [None, -10, -50, -100, -150, -200, -220, -240],
-            }
-        },
+    #     "affinity": {
+    #         "estimator": AffinityPropagation,
+    #         "param_grid": {
+    #             "damping": [0.5, 0.6, 0.7, 0.8, 0.9, 0.99],
+    #             "convergence_iter": [15, 50],
+    #             "affinity": ["euclidean"], # 'precomputed', - no results
+    #             "preference": [None, -10, -50, -100, -150, -200, -220, -240],
+    #         }
+    #     },
     #
     #
     #
@@ -124,8 +124,17 @@ def load_algorithms():
         #         "step_size": [0.1, 0.01], #, 0.001],
         #         "n_starting_vectors": [1, 2], #, 3, 5],
         #         "consider_duplicates": [True, False],
-        #         "threshold": [0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1],
-        #         "significance": [0.05, 0.1, 0.2], #, 0.4, 0.7, 0.9, 0.95, 0.99, 1.0],
+        #         "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.35, 0.5, 0.75, 1],
+        #         "significance": [0.01, 0.02, 0.05, 0.1, 0.2], #, 0.4, 0.7, 0.9, 0.95, 0.99, 1.0],
+        #     },
+        # },
+        # "dipNSub": { # NEEDS Data to be 1-dimensional - error doesnt appear for significance = 1, but doesnt seem to end ether
+        #     "estimator": DipNSub,
+        #     "param_grid": {
+        #         "outliers": [True, False],
+        #         "consider_duplicates": [True, False],
+        #         "threshold": [0.01, 0.05, 0.1, 0.15, 0.2, 0.5, 1],
+        #         "significance": [0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 1],
         #     },
         # },
     #

@@ -15,6 +15,7 @@ from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 
 
 # RUNS REQUIRED:
+# RICI: [RUNNING] PYCLUSTERING only rock algorithm from unbalance-> as it seems to have blocked
 
 # CHECK ALL CSV FOR ALGORITHMS WITH LOW PERF ON D1 - might need to rerun
 # - Might require parameter reruns:
@@ -82,7 +83,6 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
 
             for params in param_combinations:
                 param_dict = dict(zip(param_names, params))
-                print(param_dict)
                 # is_nondeterministic = any(
                 #     key in param_dict for key in ["init", "random_state"]
                 # )
@@ -93,6 +93,7 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
                 for _ in range(n_repeats if is_nondeterministic else 1):
                     try:
                         estimator = algo_details["estimator"](**param_dict)
+                        print(param_dict)
                         y_pred = estimator.fit_predict(X)
 
                         if len(np.unique(y_pred)) > 1:  # Ensure more than one cluster
@@ -151,8 +152,18 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
             results_df.to_csv(path, index=False)
 
 
-if __name__ == "__main__":
+def grid_search_across_all_data():
     datasets = load_all_data()
-    # datasets = load_sklearn_data_3_multiple_dimensions()
     algorithms = load_algorithms()
-    perform_grid_search(datasets, algorithms)
+    perform_grid_search(datasets, algorithms, 10)
+
+
+def multi_dimensional_analysis():
+    datasets = load_sklearn_data_3_multiple_dimensions()
+    algorithms = load_algorithms()
+    perform_grid_search(datasets, algorithms, 10, True)
+
+
+if __name__ == "__main__":
+    grid_search_across_all_data()
+    # multi_dimensional_analysis()
