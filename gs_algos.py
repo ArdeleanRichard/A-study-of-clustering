@@ -192,13 +192,16 @@ def load_algorithms():
     #         },
     #     },
     #
-    #     "skinnydip": {
-    #         "estimator": SkinnyDip,
-    #         "param_grid": {
-    #             "significance": [0.001, 0.005, 0.01, 0.05, 0.1, 0.5],
-    #             "pval_strategy": ["table", "bootstrap", "function"],
-    #         },
-    #     },
+        # "skinnydip": {
+        #     "estimator": SkinnyDip,
+        #     "param_grid": {
+        #         "significance": [0.001, 0.0025, 0.005, 0.0075, 0.01, 0.05, 0.1, 0.5],
+        #         "pval_strategy": ["table", "bootstrap", "function"],
+        #         "add_tails": [True, False],
+        #         "outliers": [True, False],
+        #         "max_cluster_size_diff_factor": [1, 1.25, 1.5, 1.75, 2],
+        #     },
+        # },
     #     "specialK": {
     #         "estimator": SpecialK,
     #         "param_grid": {
@@ -273,35 +276,35 @@ def load_algorithms():
     #        },
     #     },
     #
-        "acedec": {
-            "estimator": ACeDeC,
-            "param_grid": {
-                "n_clusters": [2],
-                # "embedding_size": [2],  # for low-dim datasets
-                "init": ["acedec"],
-                # "init": ["acedec", 'subkmeans', 'random', 'sgd'],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-                # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-                "pretrain_epochs": [100, 200],
-                "clustering_epochs": [100, 200],
-                # "batch_size": [32, 64, 128],
-
-                # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
-                # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
-            },
-        },
-        "aec": {
-            "estimator": AEC,
-            "param_grid": {
-                "n_clusters": [2],
-                "embedding_size": [2, 5, 10], # for low-dim datasets
-                # "embedding_size": [10, 20, 30, 40], # for high-dim datasets
-                "pretrain_epochs": [100, 200],
-                "clustering_epochs": [100, 200],
-                # "random_state ": [42]
-            },
-        },
+        # "acedec": {
+        #     "estimator": ACeDeC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         # "embedding_size": [2],  # for low-dim datasets
+        #         "init": ["acedec"],
+        #         # "init": ["acedec", 'subkmeans', 'random', 'sgd'],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+        #         "pretrain_epochs": [100, 200],
+        #         "clustering_epochs": [100, 200],
+        #         # "batch_size": [32, 64, 128],
+        #
+        #         # "pretrain_optimizer_params": [{"lr": 1e-2}, {"lr": 1e-3}, {"lr": 1e-4}],
+        #         # "clustering_optimizer_params": [{"lr": 1e-3}, {"lr": 1e-4}, {"lr": 1e-5}],
+        #     },
+        # },
+        # "aec": {
+        #     "estimator": AEC,
+        #     "param_grid": {
+        #         "n_clusters": [2],
+        #         "embedding_size": [2, 5, 10], # for low-dim datasets
+        #         # "embedding_size": [10, 20, 30, 40], # for high-dim datasets
+        #         "pretrain_epochs": [100, 200],
+        #         "clustering_epochs": [100, 200],
+        #         # "random_state ": [42]
+        #     },
+        # },
     #     "dcn": {
     #         "estimator": DCN,
     #         "param_grid": {
@@ -492,14 +495,14 @@ def load_algorithms():
     #     #         "radius": [0.01, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
     #     #     },
     #     # },
-        "syncsom": {
-            "estimator": create_algorithm_wrapper(syncsom),
-            "param_grid": {
-                "rows": [5, 10],
-                "cols": [5, 10],
-                "radius": [0.001, 0.005, 0.01, 0.03, 0.05, 0.07, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0],
-            },
-        },
+    #     "syncsom": {
+    #         "estimator": create_algorithm_wrapper(syncsom),
+    #         "param_grid": {
+    #             "rows": [5, 10],
+    #             "cols": [5, 10],
+    #             "radius": [0.001, 0.005, 0.01, 0.03, 0.05, 0.07, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0],
+    #         },
+    #     },
     #     "ttsas": {
     #         "estimator": create_algorithm_wrapper(ttsas),
     #         "param_grid": {

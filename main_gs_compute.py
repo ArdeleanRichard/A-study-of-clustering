@@ -15,13 +15,11 @@ from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 
 
 # RUNS REQUIRED:
-
 # CHECK ALL CSV FOR ALGORITHMS WITH LOW PERF ON D1 - might need to rerun
 # - Might require parameter reruns:
 # -- acedec *
 # -- aec *
 #
-# -- clique ?
 # -- skinnydip
 
 
