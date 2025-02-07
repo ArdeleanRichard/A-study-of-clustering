@@ -19,8 +19,6 @@ from gs_datasets import load_all_data, load_sklearn_data_3_multiple_dimensions
 # - Might require parameter reruns:
 # -- acedec *
 # -- aec *
-#
-# -- skinnydip
 
 
 
