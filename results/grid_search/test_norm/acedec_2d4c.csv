@@ -1,5 +1,13 @@
-n_clusters,embedding_size,init,pretrain_epochs,clustering_epochs,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
-4,2,acedec,200,200,-1,-1,-1,-1,-1,-1,inf
-4,2,subkmeans,200,200,-1,-1,-1,-1,-1,-1,inf
-4,2,random,200,200,-1,-1,-1,-1,-1,-1,inf
-4,2,sgd,200,200,-1,-1,-1,-1,-1,-1,inf
+n_clusters,init,embedding_size,pretrain_optimizer_params,clustering_optimizer_params,random_state,adjusted_rand_score,adjusted_mutual_info_score,purity_score,silhouette_score,calinski_harabasz_score,davies_bouldin_score,norm_davies_bouldin_score
+4,acedec,2,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,acedec,5,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,acedec,10,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,subkmeans,2,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,subkmeans,5,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,subkmeans,10,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,random,2,{'lr': 0.01},{'lr': 0.001},42,0.3241282677656645,0.4252992465818516,0.7508690614136733,0.22266247209134654,232.68262035207002,2.569239319715658,0.28017174261087785
+4,random,5,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,random,10,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,sgd,2,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,sgd,5,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf
+4,sgd,10,{'lr': 0.01},{'lr': 0.001},42,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,inf

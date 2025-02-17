@@ -136,12 +136,12 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
                     **aggregated_scores,
                 })
 
-            # Save results to CSV
-            results_df = pd.DataFrame(results)
-            results_df = normalize_dbs(results_df)
-            path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
-                else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
-            results_df.to_csv(path, index=False)
+                # Save results to CSV
+                results_df = pd.DataFrame(results)
+                results_df = normalize_dbs(results_df)
+                path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
+                    else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
+                results_df.to_csv(path, index=False)
 
 
 def grid_search_across_all_data():
