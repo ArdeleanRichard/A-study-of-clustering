@@ -9,6 +9,7 @@ from data_read.data_csv import create_unbalance
 from data_read.data_sklearn import create_data1, create_data2, create_data3, create_data4, create_data5
 from data_read.data_uci import create_ecoli, create_glass, create_wdbc, create_wine, create_sonar, create_ionosphere, create_statlog, create_yeast
 
+os.chdir("../")
 
 def plot_datasets(datasets, pca=None):
     for dataset in datasets:

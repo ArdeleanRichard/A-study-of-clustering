@@ -14,10 +14,11 @@ algorithm_order = [
     "meanshift",
 
     "dbscan",
-    "optics",
     "mddbscan",
     "mdbscan",
     "amddbscan",
+    "optics",
+    "drc",
 
     "hdbscan",
 
@@ -33,6 +34,7 @@ algorithm_order = [
     # Grid-Based Clustering Algorithms
     "bang",
     "clique",
+    "isbm",
     
     # Statistical Clustering Evaluation
     # These methods are used to determine the optimal number of clusters or validate clustering results.
