@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="572" viewBox="0 0 1700 572" version="1.1">
+  <text x="850.0" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#333">Clustering Algorithms Taxonomy</text>
+  <text x="130.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Partitional Clustering</text>
+  <rect x="60" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">K-Means</text>
+  <rect x="60" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">X-Means</text>
+  <rect x="60" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">LDA-KMeans</text>
+  <rect x="60" y="188" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="206.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Sub-KMeans</text>
+  <rect x="60" y="224" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="242.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Special-K</text>
+  <rect x="60" y="260" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="278.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Spectral</text>
+  <rect x="60" y="296" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="130.0" y="314.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Affinity</text>
+  <text x="310.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Density-Based Clustering</text>
+  <rect x="240" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">MeanShift</text>
+  <rect x="240" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DBSCAN</text>
+  <rect x="240" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">MD-DBSCAN</text>
+  <rect x="240" y="188" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="206.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">MDBSCAN</text>
+  <rect x="240" y="224" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="242.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">AMD-DBSCAN</text>
+  <rect x="240" y="260" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="278.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">OPTICS</text>
+  <rect x="240" y="296" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="314.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DRC</text>
+  <rect x="240" y="332" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="310.0" y="350.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">HDBSCAN</text>
+  <text x="490.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Hierarchical Clustering</text>
+  <rect x="420" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="490.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Agglomerative</text>
+  <rect x="420" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="490.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">BIRCH</text>
+  <rect x="420" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="490.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">CURE</text>
+  <rect x="420" y="188" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="490.0" y="206.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">ROCK</text>
+  <rect x="420" y="224" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="490.0" y="242.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DIANA</text>
+  <text x="670.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Grid-Based Clustering</text>
+  <rect x="600" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="670.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">BANG</text>
+  <rect x="600" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="670.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">CLIQUE</text>
+  <rect x="600" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="670.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">ISBM</text>
+  <text x="850.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Statistical Clustering Evaluation</text>
+  <rect x="780" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="850.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Gap Statistic</text>
+  <text x="1030.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Model-Based Clustering</text>
+  <rect x="960" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1030.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">G-Means</text>
+  <rect x="960" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1030.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">PG-Means</text>
+  <rect x="960" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1030.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Dip-Means</text>
+  <text x="1210.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Subspace Clustering</text>
+  <rect x="1140" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1210.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">BSAS</text>
+  <rect x="1140" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1210.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">MBSAS</text>
+  <rect x="1140" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1210.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">TT-SAS</text>
+  <text x="1390.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Constraint-Based Clustering</text>
+  <rect x="1320" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1390.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DipInit</text>
+  <rect x="1320" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1390.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DipNSub</text>
+  <rect x="1320" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1390.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">SkinnyDip</text>
+  <rect x="1320" y="188" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1390.0" y="206.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">Projected-Dip-Means</text>
+  <rect x="1320" y="224" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1390.0" y="242.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">SyncSOM</text>
+  <rect x="1320" y="260" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1390.0" y="278.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">SOMSC</text>
+  <text x="1570.0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f77b4">Deep Clustering</text>
+  <rect x="1500" y="80" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="98.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">AutoClustering</text>
+  <rect x="1500" y="116" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="134.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">ACEDEC</text>
+  <rect x="1500" y="152" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="170.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">AEC</text>
+  <rect x="1500" y="188" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="206.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DCN</text>
+  <rect x="1500" y="224" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="242.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DDC</text>
+  <rect x="1500" y="260" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="278.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DeepECT</text>
+  <rect x="1500" y="296" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="314.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DipDeck</text>
+  <rect x="1500" y="332" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="350.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DipEncoder</text>
+  <rect x="1500" y="368" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="386.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">DKM</text>
+  <rect x="1500" y="404" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="422.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">IDEC</text>
+  <rect x="1500" y="440" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="458.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">N2D</text>
+  <rect x="1500" y="476" width="140" height="28" rx="5" fill="#f0f0f0" stroke="#333"/>
+  <text x="1570.0" y="494.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000">VADE</text>
+</svg>
