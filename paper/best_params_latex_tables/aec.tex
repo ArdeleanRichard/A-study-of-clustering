@@ -1,0 +1,56 @@
+\begin{table}[H]
+\centering
+\caption{Best params for aec}
+\label{tab:params:aec}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+algorithm & dataset & n\_clusters & embedding\_size & pretrain\_optimizer\_params & clustering\_optimizer\_params & random\_state & pretrain\_epochs & clustering\_epochs \\
+\hline
+aec & 2d10c & 9 & 2 & {'lr': 0.0001} & {'lr': 0.001} & 42 & nan & nan \\
+\hline
+aec & 2d20c & 20 & 2 & {'lr': 0.0001} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+aec & 2d4c & 4 & 5 & {'lr': 0.01} & {'lr': 0.001} & 42 & nan & nan \\
+\hline
+aec & 3spiral & 3 & 5 & {'lr': 0.0001} & {'lr': 1e-05} & 42 & nan & nan \\
+\hline
+aec & aggregation & 7 & 5 & {'lr': 0.0001} & {'lr': 0.001} & 42 & nan & nan \\
+\hline
+aec & compound & 6 & 2 & {'lr': 0.0001} & {'lr': 1e-05} & 42 & nan & nan \\
+\hline
+aec & D1 & 3 & 2 & nan & nan & nan & 200 & 200 \\
+\hline
+aec & D2 & 3 & 2 & nan & nan & nan & 200 & 100 \\
+\hline
+aec & D3 & 3 & 2 & nan & nan & nan & 100 & 200 \\
+\hline
+aec & D4 & 2 & 5 & nan & nan & nan & 200 & 200 \\
+\hline
+aec & D5 & 2 & 2 & nan & nan & nan & 100 & 100 \\
+\hline
+aec & ecoli & 8 & 2 & {'lr': 0.01} & {'lr': 1e-05} & 42 & nan & nan \\
+\hline
+aec & elly2d10c13s & 10 & 2 & nan & nan & nan & 200 & 100 \\
+\hline
+aec & glass & 6 & 2 & {'lr': 0.001} & {'lr': 0.001} & 42 & nan & nan \\
+\hline
+aec & ionosphere & 2 & 10 & {'lr': 0.001} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+aec & s1 & 15 & 2 & {'lr': 0.0001} & {'lr': 0.001} & 42 & nan & nan \\
+\hline
+aec & s2 & 15 & 5 & {'lr': 0.0001} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+aec & sonar & 2 & 5 & {'lr': 0.0001} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+aec & statlog & 7 & 5 & {'lr': 0.01} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+aec & unbalance & 8 & 2 & {'lr': 0.0001} & {'lr': 1e-05} & 42 & nan & nan \\
+\hline
+aec & wdbc & 2 & 5 & {'lr': 0.0001} & {'lr': 0.001} & 42 & nan & nan \\
+\hline
+aec & wine & 3 & 2 & {'lr': 0.01} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+aec & yeast & 10 & 2 & {'lr': 0.01} & {'lr': 0.0001} & 42 & nan & nan \\
+\hline
+\end{tabular}
+\end{table}

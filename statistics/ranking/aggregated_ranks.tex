@@ -1,0 +1,108 @@
+\begin{table}[H]
+\centering
+\caption{Borda ranking by performance metrics}
+\label{tab::borda}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Rank & adjusted\_rand\_score & adjusted\_mutual\_info\_score & purity\_score & silhouette\_score & calinski\_harabasz\_score & davies\_bouldin\_score \\
+\hline
+1 & birch & spectral & xmeans & ldakmeans & ldakmeans & drc \\
+\hline
+2 & meanshift & birch & rock & dipMeans & subkmeans & mddbscan \\
+\hline
+3 & agglomerative & cure & meanshift & kmeans & kmeans & amddbscan \\
+\hline
+4 & vade & meanshift & dbscan & gapStatistic & gapStatistic & hdbscan \\
+\hline
+5 & spectral & agglomerative & spectral & subkmeans & affinity & bsas \\
+\hline
+6 & cure & ddc & birch & affinity & dipMeans & dipNSub \\
+\hline
+7 & ddc & vade & ttsas & meanshift & gmeans & syncsom \\
+\hline
+8 & dcn & dcn & gmeans & gmeans & idec & mbsas \\
+\hline
+9 & dec & dipMeans & mdbscan & dipdeck & meanshift & dipInit \\
+\hline
+10 & gapStatistic & idec & agglomerative & idec & autoclustering & aec \\
+\hline
+11 & idec & dec & n2d & autoclustering & dec & optics \\
+\hline
+12 & dipdeck & optics & idec & agglomerative & dkm & dbscan \\
+\hline
+13 & dipMeans & dipdeck & dcn & cure & dcn & n2d \\
+\hline
+14 & optics & gapStatistic & dipencoder & dkm & agglomerative & skinnydip \\
+\hline
+15 & dipencoder & dkm & dec & dcn & dipdeck & clique \\
+\hline
+16 & dkm & n2d & gapStatistic & dec & birch & somsc \\
+\hline
+17 & n2d & dipencoder & bang & birch & xmeans & deepect \\
+\hline
+18 & rock & gmeans & cure & projectedDipMeans & projectedDipMeans & ddc \\
+\hline
+19 & specialK & rock & dkm & diana & dipencoder & dipencoder \\
+\hline
+20 & kmeans & specialK & dipMeans & spectral & somsc & mdbscan \\
+\hline
+21 & gmeans & ldakmeans & ldakmeans & pgmeans & ddc & specialK \\
+\hline
+22 & dbscan & syncsom & kmeans & dipencoder & spectral & ttsas \\
+\hline
+23 & ldakmeans & hdbscan & optics & xmeans & n2d & dec \\
+\hline
+24 & autoclustering & kmeans & mddbscan & ddc & diana & dcn \\
+\hline
+25 & mdbscan & mddbscan & vade & specialK & dipInit & dkm \\
+\hline
+26 & mddbscan & mdbscan & subkmeans & deepect & skinnydip & acedec \\
+\hline
+27 & affinity & affinity & dipdeck & skinnydip & aec & diana \\
+\hline
+28 & hdbscan & dbscan & affinity & somsc & specialK & vade \\
+\hline
+29 & ttsas & autoclustering & hdbscan & n2d & cure & pgmeans \\
+\hline
+30 & subkmeans & drc & specialK & optics & deepect & idec \\
+\hline
+31 & syncsom & subkmeans & ddc & vade & pgmeans & spectral \\
+\hline
+32 & aec & ttsas & syncsom & aec & vade & birch \\
+\hline
+33 & drc & aec & aec & dipInit & isbm & gmeans \\
+\hline
+34 & pgmeans & projectedDipMeans & dipInit & isbm & acedec & autoclustering \\
+\hline
+35 & projectedDipMeans & skinnydip & acedec & hdbscan & mdbscan & xmeans \\
+\hline
+36 & skinnydip & pgmeans & projectedDipMeans & rock & rock & agglomerative \\
+\hline
+37 & acedec & acedec & drc & acedec & dbscan & isbm \\
+\hline
+38 & isbm & dipInit & autoclustering & dipNSub & optics & affinity \\
+\hline
+39 & mbsas & isbm & skinnydip & drc & mbsas & dipdeck \\
+\hline
+40 & dipInit & xmeans & mbsas & dbscan & dipNSub & kmeans \\
+\hline
+41 & bang & mbsas & isbm & mbsas & bsas & subkmeans \\
+\hline
+42 & somsc & bang & bsas & mdbscan & ttsas & bang \\
+\hline
+43 & bsas & bsas & pgmeans & bang & hdbscan & gapStatistic \\
+\hline
+44 & diana & somsc & somsc & syncsom & syncsom & cure \\
+\hline
+45 & dipNSub & dipNSub & diana & mddbscan & drc & ldakmeans \\
+\hline
+46 & amddbscan & diana & amddbscan & bsas & mddbscan & rock \\
+\hline
+47 & xmeans & amddbscan & clique & amddbscan & bang & dipMeans \\
+\hline
+48 & clique & deepect & dipNSub & ttsas & amddbscan & meanshift \\
+\hline
+49 & deepect & clique & deepect & clique & clique & projectedDipMeans \\
+\hline
+\end{tabular}
+\end{table}

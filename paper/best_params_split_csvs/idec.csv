@@ -1,0 +1,24 @@
+algorithm,dataset,n_clusters,embedding_size,pretrain_optimizer_params,clustering_optimizer_params,random_state
+idec,2d10c,9.0,2.0,{'lr': 0.001},{'lr': 0.0001},42.0
+idec,2d20c,20.0,2.0,{'lr': 0.001},{'lr': 0.0001},42.0
+idec,2d4c,4.0,10.0,{'lr': 0.001},{'lr': 0.001},42.0
+idec,3spiral,3.0,2.0,{'lr': 0.01},{'lr': 1e-05},42.0
+idec,aggregation,7.0,5.0,{'lr': 0.001},{'lr': 0.001},42.0
+idec,compound,6.0,2.0,{'lr': 0.0001},{'lr': 0.001},42.0
+idec,D1,3.0,2.0,{'lr': 0.001},{'lr': 0.001},42.0
+idec,D2,3.0,5.0,{'lr': 0.01},{'lr': 0.001},42.0
+idec,D3,3.0,2.0,{'lr': 0.01},{'lr': 0.001},42.0
+idec,D4,2.0,5.0,{'lr': 0.01},{'lr': 1e-05},42.0
+idec,D5,2.0,5.0,{'lr': 0.0001},{'lr': 0.001},42.0
+idec,ecoli,8.0,10.0,{'lr': 0.01},{'lr': 0.001},42.0
+idec,elly2d10c13s,10.0,5.0,{'lr': 0.01},{'lr': 1e-05},42.0
+idec,glass,6.0,5.0,{'lr': 0.01},{'lr': 0.0001},42.0
+idec,ionosphere,2.0,10.0,{'lr': 0.001},{'lr': 0.001},42.0
+idec,s1,15.0,5.0,{'lr': 0.001},{'lr': 1e-05},42.0
+idec,s2,15.0,5.0,{'lr': 0.01},{'lr': 1e-05},42.0
+idec,sonar,2.0,10.0,{'lr': 0.001},{'lr': 0.001},42.0
+idec,statlog,7.0,5.0,{'lr': 0.01},{'lr': 1e-05},42.0
+idec,unbalance,8.0,10.0,{'lr': 0.01},{'lr': 0.001},42.0
+idec,wdbc,2.0,2.0,{'lr': 0.0001},{'lr': 1e-05},42.0
+idec,wine,3.0,2.0,{'lr': 0.01},{'lr': 0.001},42.0
+idec,yeast,10.0,2.0,{'lr': 0.01},{'lr': 1e-05},42.0

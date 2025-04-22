@@ -1,0 +1,24 @@
+algorithm,dataset,embedding_size,pretrain_optimizer_params,clustering_optimizer_params,random_state,n_clusters_init,dip_merge_threshold
+dipdeck,2d10c,10.0,{'lr': 0.001},{'lr': 0.001},42.0,9.0,0.5
+dipdeck,2d20c,2.0,{'lr': 0.001},{'lr': 0.001},42.0,20.0,0.5
+dipdeck,2d4c,5.0,{'lr': 0.01},{'lr': 0.001},42.0,4.0,0.5
+dipdeck,3spiral,10.0,{'lr': 0.0001},{'lr': 1e-05},42.0,3.0,0.5
+dipdeck,aggregation,10.0,{'lr': 0.01},{'lr': 0.0001},42.0,7.0,0.5
+dipdeck,compound,2.0,{'lr': 0.01},{'lr': 0.0001},42.0,6.0,0.5
+dipdeck,D1,2.0,{'lr': 0.001},{'lr': 0.001},42.0,3.0,0.5
+dipdeck,D2,5.0,{'lr': 0.01},{'lr': 0.001},42.0,3.0,0.5
+dipdeck,D3,2.0,{'lr': 0.001},{'lr': 0.001},42.0,3.0,0.5
+dipdeck,D4,5.0,{'lr': 0.001},{'lr': 0.001},42.0,2.0,0.5
+dipdeck,D5,10.0,{'lr': 0.01},{'lr': 0.001},42.0,2.0,0.5
+dipdeck,ecoli,10.0,{'lr': 0.01},{'lr': 1e-05},42.0,8.0,0.5
+dipdeck,elly2d10c13s,2.0,{'lr': 0.01},{'lr': 0.001},42.0,10.0,0.5
+dipdeck,glass,5.0,{'lr': 0.01},{'lr': 1e-05},42.0,6.0,0.5
+dipdeck,ionosphere,10.0,{'lr': 0.001},{'lr': 0.0001},42.0,2.0,0.5
+dipdeck,s1,2.0,{'lr': 0.001},{'lr': 0.001},42.0,15.0,0.5
+dipdeck,s2,10.0,{'lr': 0.01},{'lr': 1e-05},42.0,15.0,0.5
+dipdeck,sonar,10.0,{'lr': 0.01},{'lr': 1e-05},42.0,2.0,0.5
+dipdeck,statlog,5.0,{'lr': 0.01},{'lr': 0.0001},42.0,7.0,0.5
+dipdeck,unbalance,2.0,{'lr': 0.0001},{'lr': 0.001},42.0,8.0,0.5
+dipdeck,wdbc,2.0,{'lr': 0.01},{'lr': 0.001},42.0,2.0,0.5
+dipdeck,wine,2.0,{'lr': 0.01},{'lr': 1e-05},42.0,3.0,0.5
+dipdeck,yeast,2.0,{'lr': 0.01},{'lr': 0.0001},42.0,10.0,0.5
