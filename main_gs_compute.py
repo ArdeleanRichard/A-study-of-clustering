@@ -37,7 +37,7 @@ def normalize_dbs(df):
 #     df = normalize_dbs(df)
 #     return df
 
-def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=False):
+def perform_grid_search(datasets, algorithms, n_repeats=10, analysis_type=0):
     for dataset_name, (X, y_true) in datasets:
         # scale all datasets to the same range
         scaler = preprocessing.MinMaxScaler().fit(X)
@@ -139,21 +139,21 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, multiple_dimensions=
                 # Save results to CSV
                 results_df = pd.DataFrame(results)
                 results_df = normalize_dbs(results_df)
-                path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv" if not multiple_dimensions \
-                    else DIR_RESULTS + f"/grid_search/multiple_dimensions/{algo_name}_{dataset_name}.csv"
+                if analysis_type == 0:
+                    path = DIR_RESULTS + f"/grid_search/{algo_name}_{dataset_name}.csv"
                 results_df.to_csv(path, index=False)
 
 
 def grid_search_across_all_data():
     datasets = load_all_data()
     algorithms = load_algorithms()
-    perform_grid_search(datasets, algorithms, 10)
+    perform_analysis(datasets, algorithms, 10)
 
 
 def multi_dimensional_analysis():
     datasets = load_sklearn_data_3_multiple_dimensions()
     algorithms = load_algorithms()
-    perform_grid_search(datasets, algorithms, 10, True)
+    perform_analysis(datasets, algorithms, 10)
 
 
 if __name__ == "__main__":

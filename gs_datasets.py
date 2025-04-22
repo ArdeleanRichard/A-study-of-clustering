@@ -159,14 +159,23 @@ def load_data_hd():
 
 
 def load_sklearn_data_3_multiple_dimensions():
-    n_samples_list = [100, 500, 1000, 5000, 10000, 50000]
-    n_features_list = [2, 5, 10, 50]
+    n_samples = 1000
+    n_features_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
     datasets = []
-    for n_samples in n_samples_list:
-        for n_features in n_features_list:
-            datasets.append((f"multiple_dimensions_D3_{n_samples}_{n_features}", create_data3(n_samples, n_features)))
+    for n_features in n_features_list:
+        datasets.append((f"D3_{n_features}", create_data3(n_samples, n_features)))
 
     return datasets
+
+def load_sklearn_data_3_multiple_samples():
+    n_samples_list = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
+    n_features = 2
+    datasets = []
+    for n_samples in n_samples_list:
+        datasets.append((f"D3_{n_samples}", create_data3(n_samples, n_features)))
+
+    return datasets
+
 
 
 if __name__ == "__main__":

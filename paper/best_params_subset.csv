@@ -1,0 +1,12 @@
+algorithm,dataset,n_clusters,init,embedding_size,pretrain_optimizer_params,clustering_optimizer_params,random_state,pretrain_epochs,clustering_epochs,damping,convergence_iter,affinity,preference,linkage,input_dim,levels,threshold,branching_factor,maximum_clusters,amount_intervals,density_threshold,number_cluster,number_represent_points,compression,eps,min_samples,ratio,max_n_leaf_nodes,n_clusters_init,dip_merge_threshold,step_size,dip_threshold,n_starting_vectors,ambiguous_triangle_strategy,significance,split_viewers_threshold,pval_strategy,outliers,consider_duplicates,min_n_clusters,max_n_clusters,n_boots,use_principal_components,use_log,n_split_trials,min_cluster_size,metric,leaf_size,pn,max_iter,n_init,k,t,var,bandwidth,bin_seeding,xi,n_projections,n_samples,number_clusters,add_tails,max_cluster_size_diff_factor,amount_clusters,epouch,similarity_matrix,n_neighbors,rows,cols,radius,threshold1,threshold2
+acedec,2d10c,9,acedec,2,{'lr': 0.01},{'lr': 0.001},42,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,2d20c,20,acedec,2,{'lr': 0.0001},{'lr': 0.0001},42,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,2d4c,4,random,2,{'lr': 0.01},{'lr': 0.001},42,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,3spiral,3,acedec,2,{'lr': 0.001},{'lr': 0.001},42,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,aggregation,7,acedec,2,{'lr': 0.01},{'lr': 0.001},42,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,compound,6,acedec,2,{'lr': 0.0001},{'lr': 0.001},42,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,D1,3,acedec,2,,,,100,200,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,D2,3,acedec,10,,,,200,100,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,D3,3,acedec,5,,,,100,200,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,D4,2,acedec,5,,,,100,200,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+acedec,D5,2,acedec,10,,,,200,100,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
