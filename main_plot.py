@@ -64,7 +64,7 @@ def transform_data_np(df, algorithms, datasets, scores, data_names):
 def plot_hierarchical_visualization(title, df, data_names):
     algorithms = df["algorithm"].unique()
     datasets = df["dataset"].unique()
-    scores = ["ARI", "AMI", "Pur", "SS", "CHS", "DBS"]
+    scores = ["ARI", "AMI", "Pur", "SS", "NCHS", "NDBS"]
 
 
     # Parameters
@@ -143,7 +143,8 @@ def plot_hierarchical_visualization(title, df, data_names):
     # Create a second x-axis on top with different labels (if done before colorbar, it moves it)
     ax2 = ax.twiny()
     ax2.set_xticks(top_ticks_x)
-    ax2.set_xticklabels(top_tick_labels)
+    ax2.set_xticklabels(top_tick_labels, rotation=90, fontsize=8, ha='center')
+
 
     # Adjust the position of the second x-axis
     ax2.xaxis.set_ticks_position('top')
@@ -156,6 +157,17 @@ def plot_hierarchical_visualization(title, df, data_names):
 
 if __name__ == "__main__":
     df = pd.read_csv(DIR_RESULTS + 'grid_search_summary.csv')
+    df_copy = df.copy()
+
+    df['norm_calinski_harabasz_score'] = df.groupby('dataset')['calinski_harabasz_score'] \
+        .transform(lambda x: np.log1p(1 + x)) \
+        .groupby(df['dataset']) \
+        .transform(lambda x: x / x.max())
+
+    out_path = DIR_RESULTS + 'grid_search_summary_all_metrics.csv'
+    df.to_csv(out_path, index=False)
+
+    df = df_copy
 
     datasets = load_data_simple()
     data_names = [x[0] for x in datasets]

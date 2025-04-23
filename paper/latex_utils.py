@@ -10,7 +10,7 @@ def format_value(val):
         if f.is_integer():
             return str(int(f))
         else:
-            return str(f)
+            return f"{f:.2f}"  # str(f)
     except:
         return str(val)
 
@@ -78,7 +78,7 @@ def wrap_and_relabel(tex_dir: str,
                 count=1
             )
 
-            out.write(relabeled + '\n\n\\clearpage\n\n')
+            out.write(relabeled + '\n\n')#\\clearpage\n\n')
 
     print(f'Combined {len(tex_files)} tables into {output_file} ' \
           f'with sequential labels starting at {new_label_base}1_Table')

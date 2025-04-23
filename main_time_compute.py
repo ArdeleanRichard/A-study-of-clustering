@@ -265,7 +265,7 @@ def multi_dimensional_analysis():
     """
     datasets = load_sklearn_data_3_multiple_dimensions()
     algorithms = load_algorithms()
-    results = perform_analysis_with_best_params(datasets, algorithms, n_repeats=5, result_file="time_analysis_dimensions")
+    results = perform_analysis_with_best_params(datasets, algorithms, n_repeats=10, result_file="time_analysis_dimensions")
 
     return results
 
@@ -277,11 +277,11 @@ def multi_samples_analysis():
     """
     datasets = load_sklearn_data_3_multiple_samples()
     algorithms = load_algorithms()
-    results = perform_analysis_with_best_params(datasets, algorithms, n_repeats=10, result_file="time_analysis_samples")
+    results = perform_analysis_with_best_params(datasets, algorithms, n_repeats=5, result_file="time_analysis_samples")
 
     return results
 
 
 if __name__ == "__main__":
-    multi_dimensional_analysis()
-    # multi_samples_analysis()
+    # multi_dimensional_analysis()
+    multi_samples_analysis()

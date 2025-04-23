@@ -1,11 +1,23 @@
 import os
 import pandas as pd
 
-from results.latex_utils import csv_to_latex, wrap_and_relabel
+from latex_utils import csv_to_latex, wrap_and_relabel
+
+RENAME_MAP = {
+    'adjusted_rand_score': 'ARI',
+    'adjusted_mutual_info_score': 'AMI',
+    'purity_score':           'Purity',
+    'silhouette_score':       'SS',
+    'calinski_harabasz_score':'CHS',
+    'davies_bouldin_score':   'DBS',
+    'norm_davies_bouldin_score':'NDBS',
+    'norm_calinski_harabasz_score':'NCHS',
+}
 
 
 def split_csv_by_dataset(input_csv: str, output_dir: str):
     df = pd.read_csv(input_csv)
+    df = df.rename(columns=RENAME_MAP)
     os.makedirs(output_dir, exist_ok=True)
 
     for dset in df['dataset'].unique():
@@ -21,7 +33,7 @@ def split_csv_by_dataset(input_csv: str, output_dir: str):
 
 
 if __name__ == '__main__':
-    prefix = "results"
+    prefix = "results_all_metrics"
     INPUT_CSV = f'../results/{prefix}.csv'
     OUTPUT_DIR = f'../paper/{prefix}_split_csvs'
     split_csv_by_dataset(INPUT_CSV, OUTPUT_DIR)

@@ -39,7 +39,7 @@ def plot_group(subdf, title, save_file):
     for algo in sorted(subdf["algorithm"].unique()):
         d = subdf[subdf["algorithm"] == algo].sort_values("features")
         # valid points
-        valid = d[~d["is_invalid"]]
+        valid = d
         plt.plot(valid["features"], valid["execution_time"],
                  label=algo, marker="o", linestyle="-", alpha=0.8)
         # invalid points
@@ -58,7 +58,7 @@ def plot_group(subdf, title, save_file):
 
 
 for id, (bin_label, group) in enumerate(fast_df.groupby("max_time_bin")):
-    plot_group(group, f"Fast Algorithms (max exec. time {bin_label})", f"time_dim_fast_{id}")
+    plot_group(group, f"Fast Algorithms (exec. time {bin_label})", f"time_dim_fast_{id}")
 
 if not slow_df.empty:
-    plot_group(slow_df, "Slow Algorithms (max exec. time ≥ 10s)", f"time_dim_slow")
+    plot_group(slow_df, "Slow Algorithms (exec. time ≥ 10s)", f"time_dim_slow")

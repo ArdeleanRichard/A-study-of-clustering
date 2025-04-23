@@ -460,10 +460,10 @@ def escape_underscore(text: str) -> str:
     return text.replace('_', r'\_')
 
 
-def datafrane_to_latex(df,
-                 output_path: str,
-                 caption: str,
-                 label: str):
+def dataframe_to_latex(df,
+                       output_path: str,
+                       caption: str,
+                       label: str):
     cols = df.columns.tolist()
     esc_cols = [escape_underscore(c) for c in cols]
     ncol = len(cols)
@@ -493,10 +493,10 @@ def datafrane_to_latex(df,
 
 def complete_analysis():
     """Execute complete analysis with all requested components."""
-    df = pd.read_csv('../results/results.csv')
+    df = pd.read_csv('../results/results_all_metrics.csv')
     df_clean = df.replace(-1, np.nan)
 
-    evaluation_metrics = ['adjusted_rand_score', 'adjusted_mutual_info_score', 'purity_score', 'silhouette_score', 'calinski_harabasz_score', 'davies_bouldin_score', 'norm_davies_bouldin_score']
+    evaluation_metrics = ['adjusted_rand_score', 'adjusted_mutual_info_score', 'purity_score', 'silhouette_score', 'calinski_harabasz_score', 'davies_bouldin_score', 'norm_davies_bouldin_score', 'norm_calinski_harabasz_score']
 
     print("\nCreate correlation heatmap - Analyzing correlation between metrics...")
     corr_matrix = create_correlation_heatmap(df_clean, evaluation_metrics)
@@ -506,12 +506,12 @@ def complete_analysis():
 
     print("\nCreating table of statistical significance...")
     significance_table = create_significance_table(evaluation_metrics, friedman_results)
-    datafrane_to_latex(significance_table, "./table_significance.tex", caption="Friedman Results", label="friedman_significance")
+    dataframe_to_latex(significance_table, "./table_significance.tex", caption="Friedman Results", label="friedman_significance")
 
     print("\nCalculating algorithm rankings and failure rates...")
     ranks, pvalues = calculate_ranks_with_significance(df_clean, evaluation_metrics)
     full_table = format_comprehensive_table(evaluation_metrics, ranks, friedman_results)
-    datafrane_to_latex(full_table, "./table_ranks_full.tex", caption="Rank Results (* p<0.05, ** p<0.01, *** p<0.001 indicate statistical significance)", label="rank_results")
+    dataframe_to_latex(full_table, "./table_ranks_full.tex", caption="Rank Results (* p<0.05, ** p<0.01, *** p<0.001 indicate statistical significance)", label="rank_results")
 
     print("\nCreating p-value heatmaps for metrics with significant differences...")
     for metric in evaluation_metrics:

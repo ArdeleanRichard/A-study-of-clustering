@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from results.latex_utils import csv_to_latex, wrap_and_relabel
+from latex_utils import csv_to_latex, wrap_and_relabel
 
 
 def split_csv_by_algorithm(input_csv: str, output_dir: str):

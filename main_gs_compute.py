@@ -147,13 +147,8 @@ def perform_grid_search(datasets, algorithms, n_repeats=10, analysis_type=0):
 def grid_search_across_all_data():
     datasets = load_all_data()
     algorithms = load_algorithms()
-    perform_analysis(datasets, algorithms, 10)
+    perform_grid_search(datasets, algorithms, 10)
 
-
-def multi_dimensional_analysis():
-    datasets = load_sklearn_data_3_multiple_dimensions()
-    algorithms = load_algorithms()
-    perform_analysis(datasets, algorithms, 10)
 
 
 if __name__ == "__main__":
