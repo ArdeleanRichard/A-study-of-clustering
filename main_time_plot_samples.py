@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from cycler import cycler
 
 df = pd.read_csv("./results/time_analysis_samples.csv")
 df["samples"] = df["dataset"].str.extract(r"D3_(\d+)").astype(int)
@@ -35,23 +36,32 @@ fast_df["max_time_bin"] = fast_df["algorithm"].map(algo_to_fastbin)
 # 5. Plot helper
 def plot_group(subdf, title, save_file):
     plt.figure(figsize=(12, 6))
-    # dummy for invalid legend
+
+    algos = sorted(subdf["algorithm"].unique())
+
+    M = 10
+    colors = sns.color_palette("colorblind", n_colors=M)
+    markers    = ['o']
+    linestyles = ['solid', 'dashed', 'dashdot', 'dotted']
+
+    plt.rc('axes', prop_cycle=cycler('linestyle', linestyles) * cycler('color', colors) * cycler('marker', markers))
+
     plt.scatter([], [], marker='x', c='red', s=100, label="Invalid run")
-    for algo in sorted(subdf["algorithm"].unique()):
+
+    for algo in algos:
         d = subdf[subdf["algorithm"] == algo].sort_values("samples")
-        # valid points
         valid = d
         plt.plot(valid["samples"], valid["execution_time"],
-                 label=algo, marker="o", linestyle="-", alpha=0.8)
-        # invalid points
+                 label=algo, alpha=0.8)
+
         inval = d[d["is_invalid"]]
         if not inval.empty:
             plt.scatter(inval["samples"], inval["execution_time"],
-                        marker="x", c="red", s=100)
+                        marker='x', c='red', s=100)
+
     plt.title(title)
     plt.xlabel("Number of Samples")
     plt.ylabel("Execution Time (s)")
-    # plt.grid(True)
     plt.legend(loc="center left", bbox_to_anchor=(1, 0.5), fontsize="small")
     plt.tight_layout()
     plt.savefig(f"./paper/time_samples/{save_file}.png")
