@@ -76,7 +76,7 @@ def plot_hierarchical_visualization(title, df, data_names):
     # data (shape: algorithms x datasets x scores)
     data = transform_data_np(df, algorithms, datasets, scores, data_names)
 
-    fig, ax = plt.subplots(figsize=(16, 11))
+    fig, ax = plt.subplots(figsize=(11, 16)) # old - (16, 11)
     fig.set_dpi(600)
 
     # Overall grid dimensions, with spacing
@@ -115,7 +115,7 @@ def plot_hierarchical_visualization(title, df, data_names):
     ax.set_xticklabels(data_names)
     ax.set_yticks([(total_height - (2 * i + 0.5) * algo_height) for i in range(num_algorithms)])  # Align ticks with rows
     ax.set_yticklabels(algorithms)
-    ax.set_title(title)
+    # ax.set_title(title) # removed in new version
     ax.set_xlabel("Datasets")
     ax.set_ylabel("Algorithms")
 
